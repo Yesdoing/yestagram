@@ -1,26 +1,43 @@
 from rest_framework import serializers
 from . import models 
+from instagram.users import models as user_models
+
+class FeedUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = user_models.User
+        fields = (
+            'username',
+            'profile_image',
+        )
 
 
+class CommentSerializer(serializers.ModelSerializer):
 
-class CommentSerializers(serializers.ModelSerializer):
+    creator = FeedUserSerializer()
 
     class Meta:
         model = models.Comment
-        fields = '__all__'
+        fields = (
+            'id',
+            'message',
+            'creator'
+        )
 
 
-class LikeSerializers(serializers.ModelSerializer):
+class LikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Like
         fields = '__all__'
 
 
-class ImageSerializers(serializers.ModelSerializer):
 
-    comments = CommentSerializers(many=True)
-    likes = LikeSerializers(many=True)
+
+class ImageSerializer(serializers.ModelSerializer):
+
+    comments = CommentSerializer(many=True)
+    creator = FeedUserSerializer()
 
     class Meta:
         model = models.Image
@@ -30,7 +47,8 @@ class ImageSerializers(serializers.ModelSerializer):
             'location',
             'caption',
             'comments',
-            'likes'
+            'like_counts',
+            'creator'
         )
 
 
