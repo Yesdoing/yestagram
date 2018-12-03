@@ -2,6 +2,18 @@ from rest_framework import serializers
 from . import models 
 from instagram.users import models as user_models
 
+class UserProfileImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'id',
+            'file',
+            'like_counts',
+            'comment_counts'
+        )
+        
+
 class FeedUserSerializer(serializers.ModelSerializer):
 
     class Meta:
