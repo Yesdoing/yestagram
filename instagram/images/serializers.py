@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from . import models 
 from instagram.users import models as user_models
+from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
 
-class UserProfileImageSerializer(serializers.ModelSerializer):
+class CountImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Image
@@ -46,8 +47,9 @@ class LikeSerializer(serializers.ModelSerializer):
 
 
 
-class ImageSerializer(serializers.ModelSerializer):
+class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
 
+    tags = TagListSerializerField()
     comments = CommentSerializer(many=True)
     creator = FeedUserSerializer()
 
@@ -60,7 +62,8 @@ class ImageSerializer(serializers.ModelSerializer):
             'caption',
             'comments',
             'like_counts',
-            'creator'
+            'creator',
+            'tags'
         )
 
 

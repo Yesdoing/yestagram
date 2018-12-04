@@ -33,6 +33,8 @@ Werkzeug = "==0.14.1"
 Sphinx = "==1.8.2"
 factory_boy = "==2.11.1"
 django_coverage_plugin = "==1.6.0"
+django-taggit = "*"
+django-taggit-serializer = "*"
 
 [requires]
 python_version = "3.7"

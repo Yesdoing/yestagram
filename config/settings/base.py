@@ -67,7 +67,8 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
-    'rest_framework.authtoken'
+    'taggit',
+    'taggit_serializer'
 ]
 LOCAL_APPS = [
     'instagram.users.apps.UsersAppConfig',
@@ -250,3 +251,5 @@ SOCIALACCOUNT_ADAPTER = 'instagram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+TAGGIT_CASE_INSENSITIVE = True
