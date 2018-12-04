@@ -92,3 +92,20 @@ class UserFollwers(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 user_followers_view = UserFollwers.as_view()
+
+class UserFollowing(APIView):
+
+    def get(self, request, username, format=None):
+
+        try:
+            found_user = models.User.objects.get(username=username)
+        except models.User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        following_user = found_user.following.all()
+
+        serializer = serializers.ListUserSerializer(following_user, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+user_following_view = UserFollowing.as_view()
