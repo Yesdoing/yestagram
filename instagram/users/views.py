@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from . import models, serializers
-
+from instagram.notifications import views as notification_views
 
 class ExploreUsers(APIView):
 
@@ -23,7 +23,6 @@ class FollowUsers(APIView):
     def post(self, request, user_id, format=None):
 
         user = request.user
-        print(user)
 
         try: 
             user_to_follow = models.User.objects.get(id=user_id)
@@ -31,6 +30,8 @@ class FollowUsers(APIView):
             user.following.add(user_to_follow)
 
             user_to_follow.followers.add(user)
+
+            notification_views.create_notification(user, user_to_follow, 'follow')
 
             return Response(status=status.HTTP_200_OK)
 
