@@ -25,7 +25,7 @@ class Feed(APIView):
         my_images = user.images.all()[:2]
 
         for image in my_images:
-            
+
             image_list.append(image)
 
         sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
@@ -33,6 +33,21 @@ class Feed(APIView):
         serializer = serializers.ImageSerializer(sorted_list, many=True)
 
         return Response(serializer.data)
+
+class ImageDetail(APIView):
+
+    def get(self, request, image_id, format=None):
+
+        user = request.user 
+
+        try:
+            image_detail = models.Image.objects.get(id=image_id)
+        except models.Image.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.ImageSerializer(image_detail)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
 class LikeImage(APIView):
