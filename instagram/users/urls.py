@@ -8,6 +8,7 @@ from instagram.users.views import (
     user_followers_view,
     user_following_view,
     user_search_view,
+    user_change_password_view,
 )
 
 app_name = "users"
@@ -19,4 +20,5 @@ urlpatterns = [
     path("<username>/following", view=user_following_view, name="user_following"),
     path("search", view=user_search_view, name="user_search"),
     path("<username>", view=user_profile_view, name="user_profile"),
+    path("<username>/password", view=user_change_password_view, name="user_change_password"),
 ]

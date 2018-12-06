@@ -112,7 +112,7 @@ class UserProfile(APIView):
             else:
 
                 return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-                
+
 user_profile_view = UserProfile.as_view()
 
 class UserFollwers(APIView):
@@ -167,3 +167,41 @@ class Search(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 user_search_view = Search.as_view()
+
+
+class ChangePassword(APIView):
+
+    def put(self, request, username, format=None):
+
+        user = request.user
+
+        if user.username != username:
+
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        current_password = request.data.get('current_password', None)
+
+        password_match = user.check_password(current_password)
+
+        if not password_match:
+
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        
+        new_password = request.data.get('new_password', None)
+
+        if new_password is None:
+
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        user.set_password(new_password)
+
+        user.save()
+
+        return Response(status=status.HTTP_200_OK)
+
+user_change_password_view = ChangePassword.as_view()
+
+
+
+
+        
