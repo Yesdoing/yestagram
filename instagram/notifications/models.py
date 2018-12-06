@@ -1,7 +1,6 @@
 from django.db import models
 from instagram.users import models as user_models
 from instagram.images import models as image_models
-# Create your models here.
 
 class Notification(image_models.TimeStampedModel):
 
