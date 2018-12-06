@@ -49,6 +49,28 @@ class ImageDetail(APIView):
         serializer = serializers.ImageSerializer(image_detail)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+    
+    def put(self, request, image_id, format=None):
+
+        user = request.user
+
+        try:
+            edit_image = models.Image.objects.get(id=image_id, creator=user)
+
+        except models.Image.DoesNotExist:
+
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = serializers.InputImageSerializer(edit_image, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            
+            serializer.save(creator=user)
+            
+            return Response(data=serializer.data, status=status.HTTP_206_PARTIAL_CONTENT)
+        
+        else:
+            return Response(error=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LikeImage(APIView):
@@ -66,9 +88,6 @@ class LikeImage(APIView):
         serializer = user_serializers.ListUserSerializer(users, many=True)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
-
-
-
 
     def post(self, request, image_id, format=None):
 
