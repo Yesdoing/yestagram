@@ -4,7 +4,7 @@ from instagram.images import serializers as image_serializers
 
 class UserProfileSerializer(serializers.ModelSerializer):
 
-    images = image_serializers.CountImageSerializer(many=True)
+    images = image_serializers.CountImageSerializer(many=True, read_only=True)
     post_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
