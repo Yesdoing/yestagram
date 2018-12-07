@@ -9,6 +9,7 @@ from instagram.users.views import (
     user_following_view,
     user_search_view,
     user_change_password_view,
+    user_facebook_login
 )
 
 app_name = "users"
@@ -21,4 +22,5 @@ urlpatterns = [
     path("search", view=user_search_view, name="user_search"),
     path("<username>", view=user_profile_view, name="user_profile"),
     path("<username>/password", view=user_change_password_view, name="user_change_password"),
+    path("login/facebook", view=user_facebook_login, name='fb_login')
 ]

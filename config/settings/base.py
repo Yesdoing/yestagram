@@ -66,12 +66,13 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'rest_framework',
     'rest_framework.authtoken',
     'taggit',
     'taggit_serializer',
     'rest_auth',
-    'rest_auth.registration'
+    'rest_auth.registration',
 ]
 LOCAL_APPS = [
     'instagram.users.apps.UsersAppConfig',

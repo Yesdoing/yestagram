@@ -3,6 +3,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from . import models, serializers
 from instagram.notifications import views as notification_views
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
 
 class ExploreUsers(APIView):
 
@@ -201,7 +203,7 @@ class ChangePassword(APIView):
 
 user_change_password_view = ChangePassword.as_view()
 
+class FacebookLogin(SocialLoginView):
+    adapter_class = FacebookOAuth2Adapter
 
-
-
-        
+user_facebook_login = FacebookLogin.as_view()
