@@ -36,6 +36,7 @@ django_coverage_plugin = "==1.6.0"
 django-taggit = "*"
 django-taggit-serializer = "*"
 djangorestframework-jwt = "*"
+django-rest-auth = "*"
 
 [requires]
 python_version = "3.7"
