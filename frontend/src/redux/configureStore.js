@@ -4,6 +4,7 @@ import users from "redux/modules/user";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
+import { i18nState } from 'redux-i18n';
 
 const env = process.env.NODE_ENV;
 
@@ -19,7 +20,8 @@ if (env === "development") {
 const reducer = history =>
   combineReducers({
     users,
-    router: connectRouter(history)
+    router: connectRouter(history),
+    i18nState,
   });
 
 let store;
