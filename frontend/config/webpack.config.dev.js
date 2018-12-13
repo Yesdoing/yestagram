@@ -316,7 +316,12 @@ module.exports = {
                 getLocalIdent: getCSSModuleLocalIdent,
                 camelCase: 'dashes'
               },
-            ),
+            ).concat({
+              loader: require.resolve("sass-loader"),
+              options: {
+                data: `@import "${paths.appSrc}/config/_variables.scss";`
+              }
+            }),
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
