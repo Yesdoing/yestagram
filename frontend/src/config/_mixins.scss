@@ -27,6 +27,26 @@
     border: 1px solid #E6E6E6;
     background-color: white;
     @if $radius == yes {
-        border-radius: 5px;
+        border-radius: 3px;
+    }
+}
+
+@mixin blueButton() {
+    -webkit-appearance: none;
+    border-radius: 3px;
+    background-color: $light-blue;
+    color: white;
+    font-weight: 600;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $nomal-font-size;
+    line-height: 26px;
+    &:focus, &:active {
+        outline: none;
+    }
+    &:focus {
+        opacity: 0.9;
     }
 }
