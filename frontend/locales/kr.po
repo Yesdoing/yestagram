@@ -1,0 +1,107 @@
+
+msgid 
+msgstr 
+"Language: kr" 
+
+#: src/components/Auth/presenter.js
+msgid "Don't have an account"
+msgstr "계정이 없으신가요"
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Sign up"
+msgstr "가입하기"
+
+#: src/components/Auth/presenter.js
+msgid "Have an account"
+msgstr "계정이 있으신가요"
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Log in"
+msgstr "로그인"
+
+#: src/components/Auth/presenter.js
+msgid "Get the app."
+msgstr "앱을 다운로드하세요."
+
+#: src/components/AuthForms/index.js
+msgid "Username"
+msgstr "사용자 이름"
+
+#: src/components/AuthForms/index.js
+msgid "Password"
+msgstr "비밀번호"
+
+#: src/components/AuthForms/index.js
+msgid "or"
+msgstr "또는"
+
+#: src/components/AuthForms/index.js
+msgid "Log in with Facebook"
+msgstr "Facebook으로 로그인"
+
+#: src/components/AuthForms/index.js
+msgid "Forgot password?"
+msgstr "비밀번호를 잊으셨나요?"
+
+#: src/components/AuthForms/index.js
+msgid "Email"
+msgstr "이메일"
+
+#: src/components/AuthForms/index.js
+msgid "FullName"
+msgstr "성명"
+
+#: src/components/AuthForms/index.js
+msgid "By signing up, you agree to our "
+msgstr "가입하면 Instagram의"
+
+#: src/components/AuthForms/index.js
+msgid "Terms, Data Policy and Cookies Policy"
+msgstr "약관, 데이터 정책 및 쿠키 정책에 동의하게 됩니다."
+
+#: src/components/Footer/index.js
+msgid "About us"
+msgstr "INSTAGRAM 정보"
+
+#: src/components/Footer/index.js
+msgid "Support"
+msgstr "지원"
+
+#: src/components/Footer/index.js
+msgid "Blog"
+msgstr "블로그"
+
+#: src/components/Footer/index.js
+msgid "Press"
+msgstr "홍보 센터"
+
+#: src/components/Footer/index.js
+msgid "API"
+msgstr "API"
+
+#: src/components/Footer/index.js
+msgid "Jobs"
+msgstr "채용 정보"
+
+#: src/components/Footer/index.js
+msgid "Privacy"
+msgstr "개인정보처리방침"
+
+#: src/components/Footer/index.js
+msgid "Terms"
+msgstr "약관"
+
+#: src/components/Footer/index.js
+msgid "Directory"
+msgstr "디렉터리"
+
+#: src/components/Footer/index.js
+msgid "Language"
+msgstr "언어"
+
+#: src/components/Footer/index.js
+msgid "© 2018 instagram"
+msgstr "© 2018 instagram"
+
