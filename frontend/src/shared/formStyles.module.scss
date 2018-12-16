@@ -52,13 +52,18 @@
       }
     }
     .facebook-login {
-        display: flex;
         align-items: center;
+        font-size: $nomal-font-size;
+        border: 0;
         color: #385185;
         justify-content: center;
         margin-bottom: 25px;
-        svg {
+        i {
             margin-right: 5px;
+        }
+        &:focus,
+        &:active {
+          outline: none;
         }
     }
     .forget-link {

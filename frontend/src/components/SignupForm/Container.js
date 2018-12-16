@@ -11,7 +11,7 @@ class Container extends Component {
 
     render() {
         const { email, fullName, username, password } = this.state;
-        const { _handleChange, _handleSubmit } = this;
+        const { _handleChange, _handleSubmit, _handleFacebookLogin } = this;
         return <SignupForm 
                     emailValue={email}
                     fullNameValue={fullName}
@@ -19,6 +19,7 @@ class Container extends Component {
                     passwordValue={password}
                     handleChange={_handleChange}
                     handleSubmit={_handleSubmit}
+                    handleFacebookLogin={_handleFacebookLogin}
                 />
     }
 
@@ -32,6 +33,10 @@ class Container extends Component {
     _handleSubmit = e => {
         e.preventDefault();
         console.log(this.state);
+    }
+    
+    _handleFacebookLogin = response => {
+        console.log(response);
     }
 }
 

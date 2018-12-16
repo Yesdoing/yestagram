@@ -13,6 +13,9 @@
     }
     .column {
         width: 40%;
+        img {
+            margin-bottom: 25px;
+        }
         @include breakpoint("phone") {
             &:first-child {
                 display: none;
