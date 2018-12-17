@@ -9,6 +9,8 @@ class User(AbstractUser):
 
     GENDER_CHOICES = (
         ('male', 'Male'),
+        ('남성', "남성"),
+        ('여성', "여성"),
         ('female', 'Female'),
         ('not specified', 'Not specified')
     )

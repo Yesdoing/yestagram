@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from rest_framework_jwt.views import obtain_jwt_token
 from instagram import views
 
 urlpatterns = [
@@ -24,6 +25,11 @@ urlpatterns = [
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
+
+urlpatterns += [
+    re_path(r'^', views.ReactAppView.as_view()),
+]
+
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
