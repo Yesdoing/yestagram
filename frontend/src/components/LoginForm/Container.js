@@ -9,7 +9,8 @@ class Container extends Component {
   };
 
   static propTypes = {
-      facebookLogin: PropTypes.func.isRequired
+      facebookLogin: PropTypes.func.isRequired,
+      usernameLogin: PropTypes.func.isRequired
   }
 
   render() {
@@ -35,8 +36,10 @@ class Container extends Component {
     });
   };
   _handleSubmit = e => {
+    const { usernameLogin } = this.props;
+    const { username, password } = this.state;
     e.preventDefault();
-    console.log(this.state);
+    usernameLogin( username, password );
   };
   _handleFacebookLogin = response => {
     const { facebookLogin } = this.props;

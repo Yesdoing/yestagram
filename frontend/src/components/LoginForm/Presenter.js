@@ -9,7 +9,7 @@ const LoginForm = (props, context) => (
     <form className={styles.form}>
       <input type="text" placeholder={context.t("Username")} className={styles.textInput} value={props.usernameValue} name="username" onChange={props.handleChangeValue} />
       <input type="password" placeholder={context.t("Password")} className={styles.textInput} value={props.passwordValue} name="password" onChange={props.handleChangeValue} /> 
-      <button type="submit" className={styles.button} onSubmit={props.handleSubmit}>{context.t("Log in")}</button>
+      <button type="submit" className={styles.button} onClick={props.handleSubmit}>{context.t("Log in")}</button>
     </form>
     <span className={styles.divider}>{context.t("or")}</span>
 
