@@ -54,6 +54,29 @@ fetch("/rest-auth/login/", {
 })
 .catch(err => console.log(err));
 
+const createAccount = (username, password, email, name) => (dispatch) => {
+    fetch("/rest-auth/registration/", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            username,
+            password1: password,
+            password2: password,
+            email,
+            name
+        })
+    })
+    .then(response => response.json())
+    .then(json => {
+        if(json.token) {
+            dispatch(saveToken(json.token))
+        }
+    })
+    .catch(err => console.log(err));
+}
+
 
 // initiail state
 const initiailState = {
@@ -86,7 +109,8 @@ function applySetToken(state, action) {
 
 const actionCreators = {
     facebookLogin,
-    usernameLogin
+    usernameLogin,
+    createAccount
 };
 
 export { actionCreators };
