@@ -15,12 +15,12 @@ const LoginForm = (props, context) => (
 
     <FacebookLogin
     appId="178144872823283"
-    autoLoad={true}
     fields="name,email,picture"
     cssClass={styles.facebookLogin}
     icon="fa-facebook"
-    callback={props.handleFacebookLogin} />
-
+    callback={props.handleFacebookLogin}
+    textButton={context.t("Login with Facebook")}
+    />
     <span className={styles.forgotLink}>{context.t("Forgot password?")}</span>
   </div>
 );

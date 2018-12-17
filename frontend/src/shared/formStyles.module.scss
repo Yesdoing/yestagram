@@ -71,8 +71,9 @@
         color: $dark-blue;
     }
     .button {
+
       @include blueButton();
-      svg {
+      i {
         margin-right: 10px;
       }
     }

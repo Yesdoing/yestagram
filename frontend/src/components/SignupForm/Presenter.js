@@ -8,11 +8,11 @@ const SignupForm = (props, context) => (
     <div className={styles.formComponent}>
       <FacebookLogin
         appId="178144872823283"
-        autoLoad={true}
         fields="name,email,picture"
         cssClass={styles.facebookLogin}
         icon="fa-facebook"
         callback={props.handleFacebookLogin}
+        textButton={context.t("Login with Facebook")}
       />
       <span className={styles.divider}>{context.t("or")}</span>
       <form className={styles.form}>
