@@ -21,15 +21,15 @@ const Navigation = (props, context) => (
             <div className={styles.column}>
                 <div className={styles.navIcon}>
                     <Link to="/explore">
-                        <IosCompassOutline onClick={() => alert('Hi!')} fontSize="32px" color="black" />
+                        <IosCompassOutline fontSize="32px" color="black" />
                     </Link>
                 </div>
                 <div className={styles.navIcon}>
-                    <MdHeartOutline onClick={() => alert('Hi!')} fontSize="32px" color="black" />
+                    <MdHeartOutline fontSize="32px" color="black" />
                 </div>
                 <div className={styles.navIcon}>
                     <Link to="/profile">
-                        <MdPerson onClick={() => alert('Hi!')} fontSize="32px" color="black" />
+                        <MdPerson fontSize="32px" color="black" />
                     </Link>
                 </div>
             </div>
