@@ -1,0 +1,10 @@
+.feed {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $max-page-width;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}

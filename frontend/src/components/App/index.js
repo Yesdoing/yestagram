@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Container from './container';
+import Container from './Container';
 
 const mapStateToProps = (state, ownProps) => {
   const { user } = state;
