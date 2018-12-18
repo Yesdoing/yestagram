@@ -80,7 +80,8 @@ const createAccount = (username, password, email, name) => (dispatch) => {
 
 // initiail state
 const initiailState = {
-  isLoggedIn: localStorage.getItem("jwt") ? true : false
+  isLoggedIn: localStorage.getItem("jwt") ? true : false,
+  token: localStorage.getItem("jwt")
 };
 
 // reducer
