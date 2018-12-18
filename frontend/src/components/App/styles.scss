@@ -7,6 +7,10 @@ body {
     font-size: $nomal-font-size;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 img {
     max-width: 100%;
 }
