@@ -1,26 +1,35 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Feed from './Presenter';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Feed from "./Presenter";
 
 class Container extends Component {
+  static propTypes = {
+    getFeed: PropTypes.func.isRequired
+  };
 
-    static propTypes = {
-        getFeed: PropTypes.func.isRequired,
-    };
+  state = {
+    loading: true
+  };
 
-    componentDidMount() {
-        const { getFeed } = this.props;
-        getFeed();
-    }
+  componentDidMount() {
+    const { getFeed } = this.props;
+    if(!this.props.feed) getFeed();
+    else this.setState({loading: false});
+  }
 
-    state = {
-        loading: true,
-    }
-    render() {
-        return (
-            <Feed {...this.state}/>
-        );
-    }
+  static getDerivedStateFromProps(props, state) {
+    if (props.feed) {
+      return {
+        loading: false
+      };
+    } 
+    return true;
+  }
+
+  render() {
+    const { feed } = this.props;
+    return <Feed {...this.state} feed={feed} />;
+  }
 }
 
 export default Container;
