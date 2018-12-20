@@ -1,0 +1,5 @@
+.feed-photo {
+    @include boxBorder(no);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
