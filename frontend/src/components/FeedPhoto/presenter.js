@@ -8,21 +8,23 @@ import CommentBox from 'components/CommentBox';
 
 const FeedPhoto = props => (
       <div className={styles.feedPhoto}>
-          <header>
-              <img 
+          <header className={styles.header}>
+              <img
+                className={styles.profileImage}
                 src={props.creator.profile_image || require("images/noPhoto.jpg")}
                 alt={props.creator.username}
               />
-              <div>
-                  <span>{props.creator.username}</span>
-                  <span>{props.location}</span>
+              <div className={styles.headerColumn}>
+                  <span className={styles.creator}>{props.creator.username}</span>
+                  <span className={styles.location}>{props.location}</span>
               </div>
           </header>
           <img 
             src={props.file}
             alt={props.caption}
+            className={styles.feedImage}
           />
-          <div>
+          <div className={styles.meta}>
               <PhotoActions number={props.like_counts} />
               <PhotoComments creator={props.creator.username} caption={props.caption} comments={props.comments} />
               <TimeStamp time={props.natural_time} />
