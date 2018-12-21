@@ -5,7 +5,7 @@ import { actionCreators as userActions} from 'redux/modules/user';
 const SET_FEED = "SET_FEED";
 const LIKE_PHOTO = "LIKE_PHOTO";
 const UNLIKE_PHOTO = "UNLIKE_PHOTO";
-
+const ADD_COMMENT = "ADD_COMMENT";
 
 // action creators
 const setFeed = (feed) => ({
@@ -21,6 +21,12 @@ const doLikePhoto = (photoId) => ({
 const doUnLikePhoto = photoId => ({
     type: UNLIKE_PHOTO,
     photoId
+});
+
+const addComment = (photoId, comment) => ({
+    type: ADD_COMMENT,
+    photoId,
+    comment
 });
 
 // api actions 
@@ -95,6 +101,11 @@ const commentPhoto = (photoId, message) => {
             if(response.status === 401) {
                 dispatch(userActions.logout());
             }
+            return response.json();
+        }).then(json => {
+            if(json.message) {
+                dispatch(addComment(photoId, json));
+            }
         })
     }
 }
@@ -112,6 +123,8 @@ const reducer = (state = initialState, action) => {
             return applyLikePhoto(state, action);
         case UNLIKE_PHOTO:
             return applyUnLikePhoto(state, action);
+        case ADD_COMMENT:
+            return applyAddComment(state, action);
         default:
             return state;
     }
@@ -148,6 +161,21 @@ const applyUnLikePhoto = (state, action) => {
     });
     return {...state, feed: updateFeed};
 };
+
+const applyAddComment = (state, action) => {
+    const { photoId, comment } = action;
+    const { feed } = state;
+    const updateFeed = feed.map(photo => {
+        if(photo.id === photoId) {
+            return {...photo, comments: [
+                ...photo.comments,
+                comment
+            ]}
+        }
+        return photo;
+    });
+    return {...state, feed: updateFeed};
+}
 
 // exports 
 const actionCreators = {
