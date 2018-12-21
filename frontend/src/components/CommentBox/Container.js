@@ -1,11 +1,40 @@
-import React, { Component } from 'react';
-import CommentBox from './Presenter';
+import React, { Component } from "react";
+import CommentBox from "./Presenter";
 
 class Container extends Component {
+  state = {
+    comment: ""
+  };
+  render() {
+    return (
+      <CommentBox
+        {...this.state}
+        {...this.props}
+        handleInputChange={this._handleInputChange}
+        handleKeyPress={this._handleKeyPress}
+      />
+    );
+  }
 
-    render() {
-        return <CommentBox />
+  _handleInputChange = event => {
+    const {
+      target: { value }
+    } = event;
+    this.setState({
+      comment: value
+    });
+  };
+
+  _handleKeyPress = event => {
+    const { key } = event;
+    const { comment } = this.state;
+    const { submitComment } = this.props;
+
+    if(key === "Enter") {
+        event.preventDefault();
+        submitComment(comment);
     }
+  };
 }
 
 export default Container;

@@ -79,6 +79,26 @@ const unLikePhoto = (photoId) => {
     };
 };
 
+const commentPhoto = (photoId, message) => {
+    return (dispatch, getState) => {
+        const { user: { token } } = getState();
+        fetch(`/images/${photoId}/comments`, {
+            method: 'POST',
+            headers: {
+                Authorization: `JWT ${token}`,
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                message
+            })
+        }).then(response => {
+            if(response.status === 401) {
+                dispatch(userActions.logout());
+            }
+        })
+    }
+}
+
 // initial state 
 const initialState = {
 };
@@ -134,6 +154,7 @@ const actionCreators = {
     getFeed,
     likePhoto,
     unLikePhoto,
+    commentPhoto,
 };
 
 export { actionCreators };
