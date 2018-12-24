@@ -4,6 +4,7 @@
 
 const SAVE_TOKEN = "SAVE_TOKEN";
 const LOGOUT = "LOGOUT";
+const SET_USER_LIST = "SET_USER_LIST";
 // action creators
 
 function saveToken(token) {
@@ -18,6 +19,13 @@ function logout() {
         type: LOGOUT
     };
 }
+
+const setUserList = (userList) => {
+    return {
+        type: SET_USER_LIST,
+        userList
+    };
+};
 
 // API actions
 
@@ -83,6 +91,24 @@ const createAccount = (username, password, email, name) => (dispatch) => {
     .catch(err => console.log(err));
 }
 
+const getPhotoLikes = (photoId) => {
+    return (dispatch, getState) => {
+        const { user: {token}} = getState();
+        fetch(`/images/${photoId}/likes`, {
+            headers: {
+                Authorization: `JWT ${token}`,
+            }
+        }).then(response => {
+            if(response.status === 401) {
+                dispatch(logout());
+            }
+            return response.json();
+        }).then(json => {
+            dispatch(setUserList(json));
+        })
+    }
+}
+
 
 // initiail state
 const initiailState = {
@@ -97,6 +123,8 @@ function reducer(state = initiailState, action) {
         return applySetToken(state, action);
     case LOGOUT:
         return applyLogout(state, action);
+    case SET_USER_LIST:
+        return applySetUserList(state, action);
     default:
       return state;
   }
@@ -121,13 +149,22 @@ function applyLogout(state, action) {
     };
 }
 
+const applySetUserList = (state, action) => {
+    const { userList } = action;
+    return {
+        ...state,
+        userList
+    };
+};
+
 // exports
 
 const actionCreators = {
     facebookLogin,
     usernameLogin,
     createAccount,
-    logout
+    logout,
+    getPhotoLikes,
 };
 
 export { actionCreators };
