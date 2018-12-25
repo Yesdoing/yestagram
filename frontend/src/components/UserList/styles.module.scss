@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     .box {
-        @include boxBorder(no);
+        @include boxBorder(yes);
         width: 100%;
         max-width: $max-card-width;
         .header {
@@ -20,6 +20,7 @@
             border-bottom: 2px solid $light-grey;
             svg {
                 cursor: pointer;
+                margin-left: 16px;
             }
             .title {
                 order: 1;
@@ -32,8 +33,8 @@
         .content {
             min-height: 300px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
     }
 }

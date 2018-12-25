@@ -97,6 +97,7 @@ const getPhotoLikes = (photoId) => {
         fetch(`/images/${photoId}/likes`, {
             headers: {
                 Authorization: `JWT ${token}`,
+                "Content-type": "application/json"
             }
         }).then(response => {
             if(response.status === 401) {

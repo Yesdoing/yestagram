@@ -7,6 +7,18 @@ class Container extends Component {
         loading: true
     };
 
+
+
+    
+      static getDerivedStateFromProps(props, state) {
+        if (props.userList) {
+          return {
+            loading: false
+          };
+        } 
+        return true;
+      }
+    
     render() {
         return (
             <UserList {...this.state} {...this.props} />
