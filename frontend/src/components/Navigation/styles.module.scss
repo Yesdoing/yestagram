@@ -3,6 +3,11 @@
     @include boxBorder(no);
     display: flex;
     justify-content: center;
+    margin-bottom: 60px;
+    box-sizing: border-box;
+    @include breakpoint("phone") {
+        margin-bottom: 0;
+    }
     .inner {
         max-width: $max-page-width;
         display: flex;
@@ -16,6 +21,11 @@
             justify-content: center;
             align-items: center;
             width: 33%;
+            &:nth-child(2) {
+                @include breakpoint("phone") {
+                    display: none;
+                }
+            }
             &:first-child {
                 justify-content: flex-start;
             }
@@ -46,9 +56,6 @@
             .nav-icon {
                 margin-left: 30px;
                 cursor: pointer;
-                &:first-child {
-                    margin-left: 0;
-                }
             }
         }
     }
