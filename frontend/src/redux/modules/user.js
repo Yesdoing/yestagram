@@ -5,6 +5,8 @@
 const SAVE_TOKEN = "SAVE_TOKEN";
 const LOGOUT = "LOGOUT";
 const SET_USER_LIST = "SET_USER_LIST";
+const FOLLOW_USER = "FOLLOW_USER";
+const UNFOLLOW_USER = "UNFOLLOW_USER";
 // action creators
 
 function saveToken(token) {
@@ -26,6 +28,20 @@ const setUserList = (userList) => {
         userList
     };
 };
+
+const setFollowUser = (userId) => {
+    return {
+        type: FOLLOW_USER,
+        userId
+    };
+}
+
+const setUnFollowUser = (userId) => {
+    return {
+        type: UNFOLLOW_USER,
+        userId
+    };
+}
 
 // API actions
 
@@ -106,10 +122,47 @@ const getPhotoLikes = (photoId) => {
             return response.json();
         }).then(json => {
             dispatch(setUserList(json));
-        })
-    }
-}
+        });
+    };
+};
 
+const followUser = (userId) => {
+    return (dispatch, getState) => {
+        const { user: {token} } = getState();
+        dispatch(setFollowUser(userId));
+        fetch(`/users/${userId}/follow`, {
+            method: "POST",
+            headers: {
+                Authorization: `JWT ${token}`,
+            }
+        }).then(response => {
+            if(response.state === 401) {
+                dispatch(logout());
+            } else if(!response.ok) {
+                dispatch(setUnFollowUser(userId));
+            }
+        });
+    };
+};
+
+const UnFollowUser = (userId) => {
+    return (dispatch, getState) => {
+        const { user: {token} } = getState();
+        dispatch(setUnFollowUser(userId));
+        fetch(`/users/${userId}/unfollow`, {
+            method: "POST",
+            headers: {
+                Authorization: `JWT ${token}`,
+            }
+        }).then(response => {
+            if(response.state === 401) {
+                dispatch(logout());
+            } else if(!response.ok) {
+                dispatch(setFollowUser(userId));
+            }
+        });
+    }
+};
 
 // initiail state
 const initiailState = {
@@ -126,6 +179,10 @@ function reducer(state = initiailState, action) {
         return applyLogout(state, action);
     case SET_USER_LIST:
         return applySetUserList(state, action);
+    case FOLLOW_USER:
+        return applyFollowUser(state, action);
+    case UNFOLLOW_USER:
+        return applyUnFollowUser(state, action);
     default:
       return state;
   }
@@ -158,6 +215,30 @@ const applySetUserList = (state, action) => {
     };
 };
 
+const applyFollowUser = (state, action) => {
+    const { userId } = action;
+    const { userList } = state; 
+    const updatedUserList = userList.map(user => {
+        if(user.id === userId) {
+            return { ...user, following: true}
+        }
+        return user;
+    });
+    return {...state, userList: updatedUserList};
+};
+
+const applyUnFollowUser = (state, action) => {
+    const { userId } = action;
+    const { userList } = state; 
+    const updatedUserList = userList.map(user => {
+        if(user.id === userId) {
+            return { ...user, following: false}
+        }
+        return user;
+    });
+    return {...state, userList: updatedUserList};
+};
+
 // exports
 
 const actionCreators = {
@@ -166,6 +247,8 @@ const actionCreators = {
     createAccount,
     logout,
     getPhotoLikes,
+    followUser,
+    UnFollowUser
 };
 
 export { actionCreators };

@@ -2,9 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 16px;
+    padding: 10px 16px;
     width: 100%;
     box-sizing: border-box;
+    border: 1px solid $light-grey;
     .column {
       display: flex;
       align-items: center;
@@ -14,6 +15,11 @@
         margin-left: 10px;
         .username {
           font-weight: 600;
+          display: block;
+          margin-bottom: 3px;
+        }
+        .name {
+          color: $dark-grey;
         }
       }
       .bigAvatar {
@@ -27,7 +33,6 @@
       }
       .button {
         @include blueButton();
-        cursor: pointer;
       }
     }
   }
