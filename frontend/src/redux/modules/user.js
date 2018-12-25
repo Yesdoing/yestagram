@@ -7,6 +7,7 @@ const LOGOUT = "LOGOUT";
 const SET_USER_LIST = "SET_USER_LIST";
 const FOLLOW_USER = "FOLLOW_USER";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
+const SET_IMAGE_LIST = "SET_IMAGE_LIST";
 // action creators
 
 function saveToken(token) {
@@ -42,6 +43,12 @@ const setUnFollowUser = (userId) => {
         userId
     };
 }
+
+
+const setImageList = (imageList) => ({
+    type: SET_IMAGE_LIST,
+    imageList
+});
 
 // API actions
 
@@ -182,6 +189,44 @@ const UnFollowUser = (userId) => {
     }
 };
 
+const searchByTerm = searchTerm => {
+    return async (dispatch, getState) => {
+        const { user: { token } } = getState();
+        const userList = await searchUsers(token, searchTerm);
+        const imageList = await searchImage(token, searchTerm);
+
+        if(userList === 401 || imageList === 401 ) {
+            dispatch(logout());
+        }
+        dispatch(setUserList(userList));
+        dispatch(setImageList(imageList));
+    }
+}
+
+const searchUsers = (token, searchTerm) => fetch(
+    `/users/search?username=${searchTerm}`, {
+        headers: {
+            Authorization: `JWT ${token}`,
+        }
+    }).then(response => {
+        if(response.status === 401) {
+            return 401;
+        }
+        return response.json();
+    }).then(json => json);
+
+const searchImage = (token, searchTerm) => fetch(
+    `/images/search?hashtags=${searchTerm}`, {
+        headers: {
+            Authorization: `JWT ${token}`,
+        }
+    }).then(response => {
+        if(response.status === 401) {
+            return 401;
+        }
+        return response.json();
+    }).then(json => json);
+
 // initiail state
 const initiailState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
@@ -201,6 +246,8 @@ function reducer(state = initiailState, action) {
         return applyFollowUser(state, action);
     case UNFOLLOW_USER:
         return applyUnFollowUser(state, action);
+    case SET_IMAGE_LIST:
+        return applySetImageList(state, action);
     default:
       return state;
   }
@@ -257,6 +304,14 @@ const applyUnFollowUser = (state, action) => {
     return {...state, userList: updatedUserList};
 };
 
+const applySetImageList = (state, action) => {
+    const { imageList } = action;
+    return {
+        ...state,
+        imageList
+    };
+}
+
 // exports
 
 const actionCreators = {
@@ -267,7 +322,8 @@ const actionCreators = {
     getPhotoLikes,
     followUser,
     UnFollowUser,
-    getExplore
+    getExplore,
+    searchByTerm
 };
 
 export { actionCreators };

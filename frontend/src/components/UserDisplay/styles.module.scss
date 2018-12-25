@@ -1,4 +1,4 @@
-.container {
+.horizontal {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +33,7 @@
         height: 55px;
         border-radius: 50%;
       }
-      .avatar {
+      .profile-image {
         width: 30px;
         height: 30px;
         border-radius: 50%;
@@ -43,3 +43,46 @@
       }
     }
   }
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  width: 30%;
+  max-width: $normal-card-width;
+  @include boxBorder(no);
+  background-color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-right: 28px;
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .profile-image {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+    .user {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 12px;
+      .username {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 3px;
+      }
+      .name {
+        color: $dark-grey;
+      }
+    }
+    .button {
+      @include blueButton();
+    }
+  }
+}

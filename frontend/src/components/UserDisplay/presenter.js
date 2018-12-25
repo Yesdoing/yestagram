@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
 
-const UserRow = (props, context) => (
-  <div className={styles.container}>
+const UserDisplay = (props, context) => (
+  <div className={props.vertical ? styles.vertical : styles.horizontal}>
     <div className={styles.column}>
       <img
-        className={props.big ? styles.bigAvatar : styles.avatar}
+        className={styles.profileImage}
         src={props.user.profile_image || require("images/noPhoto.jpg")}
         alt={props.user.username}
       />
@@ -27,24 +27,24 @@ const UserRow = (props, context) => (
   </div>
 );
 
-UserRow.contextTypes = {
+UserDisplay.contextTypes = {
   t: PropTypes.func.isRequired
 };
 
-UserRow.propTypes = {
+UserDisplay.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    profile_image: PropTypes.string.isRequired,
+    profile_image: PropTypes.string,
     following: PropTypes.bool.isRequired
   }).isRequired,
-  big: PropTypes.bool,
+  vertical: PropTypes.bool,
   handleClick: PropTypes.func.isRequired
 };
 
-UserRow.defaultProps = {
-    big: false
+UserDisplay.defaultProps = {
+  vertical: false
 };
 
-export default UserRow;
+export default UserDisplay;
