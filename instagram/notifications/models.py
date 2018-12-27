@@ -1,6 +1,7 @@
 from django.db import models
 from instagram.users import models as user_models
 from instagram.images import models as image_models
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 class Notification(image_models.TimeStampedModel):
 
@@ -16,8 +17,12 @@ class Notification(image_models.TimeStampedModel):
     image = models.ForeignKey(image_models.Image, on_delete=models.PROTECT, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
 
+    @property
+    def natural_time(self):
+        return naturaltime(self.updated_at)
+
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-updated_at']
 
     def __str__(self):
         return 'From: {} - To: {}'.format(self.from_user, self.to_user)
