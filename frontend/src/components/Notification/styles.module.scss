@@ -1,0 +1,19 @@
+.notification {
+    width: 500px;
+    min-height: 100px;
+    max-height: 362px;
+    @include boxBorder(yes);
+    display: block;
+    position: absolute;
+    margin-left: -423px;
+    margin-top: 15px;
+    z-index: 12;
+    box-shadow: 0 0 5px rgba(117, 66, 66, 0.098);
+    overflow: hidden auto;
+    .noti-loading {
+        display: flex;
+        height: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import Loading from 'common/Loading';
-import UserRow from 'components/UserRow';
+import UserDisplay from 'components/UserDisplay';
 
 const Explore = (props) => {
     if(props.loading) {
@@ -19,7 +19,7 @@ const ExploreLoading = props => (
 )
 
 const RenderExplore = props => (
-    <div className={styles.explore}>{props.userList.map(user => <UserRow big={true} user={user} key={user.id} />)}</div>
+    <div className={styles.explore}>{props.userList.map(user => <UserDisplay big={true} user={user} key={user.id} />)}</div>
 );
 
 Explore.contextTypes = {

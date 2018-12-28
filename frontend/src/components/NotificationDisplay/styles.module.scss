@@ -1,0 +1,38 @@
+.noti-row {
+    width: 100%;
+    min-height: 67px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px 13px;
+    border-bottom: 1px solid $light-grey;
+    .column {
+        &:nth-child(2) {
+            flex: 3;
+            text-align: start;    
+        }
+        &:nth-child(3) {
+            margin-left: 10px;
+        }
+        text-align: center;        
+        .noti-profile-image {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .from-user {
+            font-weight: 600;
+        }
+        .noti-time {
+            color: $dark-grey;
+        }
+        .button {
+            @include blueButton();
+        }
+        .noti-img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}

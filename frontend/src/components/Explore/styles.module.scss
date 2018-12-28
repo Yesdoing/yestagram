@@ -1,5 +1,4 @@
 .explore {
-
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -7,6 +6,7 @@
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    margin-top: 140px;
     @include boxBorder(yes);
     @include breakpoint("phone") {
         background-color: transparent;

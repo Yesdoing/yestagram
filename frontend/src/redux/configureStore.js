@@ -5,6 +5,7 @@ import { connectRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
 import user from "redux/modules/user";
 import photos from "redux/modules/photos";
+import notification from "redux/modules/notification";
 import { i18nState } from 'redux-i18n';
 
 const env = process.env.NODE_ENV;
@@ -22,6 +23,7 @@ const reducer = history =>
   combineReducers({
     user,
     photos,
+    notification,
     router: connectRouter(history),
     i18nState,
   });

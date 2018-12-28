@@ -1,10 +1,13 @@
 .nav {
+    position: fixed;
+    top: 0;
     width: 100%;
     @include boxBorder(no);
     display: flex;
     justify-content: center;
     margin-bottom: 60px;
     box-sizing: border-box;
+    z-index: 12;
     @include breakpoint("phone") {
         margin-bottom: 0;
     }

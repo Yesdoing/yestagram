@@ -4,7 +4,7 @@ import Explore from "./Presenter";
 
 class Container extends Component {
   static propTypes = {
-    getFeed: PropTypes.func.isRequired,
+    getExplore: PropTypes.func.isRequired,
     userList: PropTypes.array
   };
 
