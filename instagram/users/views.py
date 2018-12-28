@@ -48,7 +48,6 @@ class UnfollowUsers(APIView):
     def post(self, request, user_id, format=None):
 
         user = request.user
-        print(user)
 
         try: 
             user_to_follow = models.User.objects.get(id=user_id)

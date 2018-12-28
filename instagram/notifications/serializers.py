@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from . import models 
 from instagram.users import serializers as user_serializers
+from instagram.users import models as user_models
 from instagram.images import serializers as image_serializers
 
 class NotificationsSerializer(serializers.ModelSerializer):
@@ -17,6 +18,5 @@ class NotificationsSerializer(serializers.ModelSerializer):
             'notification_type',
             'image',
             'comment',
-            'natural_time'
+            'natural_time',
         )
-

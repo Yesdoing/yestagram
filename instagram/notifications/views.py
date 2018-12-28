@@ -10,9 +10,9 @@ class Notifications(APIView):
 
         user = request.user
 
-        notifications = models.Notification.objects.filter(to_user=user)
+        notifications = models.Notification.objects.filter(to_user=user).order_by('-updated_at')
 
-        serializer = serializers.NotificationsSerializer(notifications, many=True)
+        serializer = serializers.NotificationsSerializer(notifications, many=True, context={"request": request})
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
@@ -38,7 +38,7 @@ def create_notification(from_user, to_user, notification_type, image=None, comme
                 comment = comment
             )
 
-            notification.save()
+        notification.save()
 
     except models.Notification.DoesNotExist:
 
