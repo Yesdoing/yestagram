@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import PropTypes from 'prop-types';
+import FollowBtn from 'common/FollowBtn';
 
 const NotificationDisplay = (props, context) => {
     const { notification_type: notiType , comment} = props.noti;
 
     let mention;
-    console.log(props);
     if( notiType === 'follow' ) {
         mention = 'started following you.';
     } else if(notiType === 'like') {
@@ -28,9 +28,7 @@ const NotificationDisplay = (props, context) => {
             <div className={styles.column}>
                 {
                     notiType === 'follow' ?
-                    <button className={styles.button} onClick={props.handleClick}>                     
-                      {context.t("UnFollow")}
-                    </button>
+                    <FollowBtn user={props.noti.from_user} />
                     : <img className={styles.notiImg} src={props.noti.image.file || require('images/noPhoto.jpg')} alt="notiObject" />
                 }
             </div>

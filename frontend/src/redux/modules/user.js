@@ -1,4 +1,5 @@
 // imports
+import { actionCreators as notiActions} from 'redux/modules/notification';
 
 // actions
 
@@ -155,6 +156,7 @@ const followUser = (userId) => {
     return (dispatch, getState) => {
         const { user: {token} } = getState();
         dispatch(setFollowUser(userId));
+        dispatch(notiActions.changeNotiListFollow(userId));
         fetch(`/users/${userId}/follow`, {
             method: "POST",
             headers: {
@@ -165,6 +167,7 @@ const followUser = (userId) => {
                 dispatch(logout());
             } else if(!response.ok) {
                 dispatch(setUnFollowUser(userId));
+                dispatch(notiActions.changeNotiListFollow(userId));
             }
         });
     };
@@ -174,6 +177,7 @@ const UnFollowUser = (userId) => {
     return (dispatch, getState) => {
         const { user: {token} } = getState();
         dispatch(setUnFollowUser(userId));
+        dispatch(notiActions.changeNotiListFollow(userId));
         fetch(`/users/${userId}/unfollow`, {
             method: "POST",
             headers: {
@@ -184,6 +188,7 @@ const UnFollowUser = (userId) => {
                 dispatch(logout());
             } else if(!response.ok) {
                 dispatch(setFollowUser(userId));
+                dispatch(notiActions.changeNotiListFollow(userId));
             }
         });
     }

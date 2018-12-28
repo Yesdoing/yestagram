@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
+import FollowBtn from 'common/FollowBtn';
 
 const UserDisplay = (props, context) => (
   <div className={props.vertical ? styles.vertical : styles.horizontal}>
@@ -16,13 +17,7 @@ const UserDisplay = (props, context) => (
       </div>
     </div>
     <span className={styles.column}>
-      <button className={styles.button} onClick={props.handleClick}>
-        {
-          props.user.following ? 
-            context.t("UnFollow") :
-            context.t("Follow")
-        }
-      </button>
+      <FollowBtn user={props.user} />
     </span>
   </div>
 );
@@ -40,7 +35,6 @@ UserDisplay.propTypes = {
     following: PropTypes.bool.isRequired
   }).isRequired,
   vertical: PropTypes.bool,
-  handleClick: PropTypes.func.isRequired
 };
 
 UserDisplay.defaultProps = {
