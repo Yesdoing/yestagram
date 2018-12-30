@@ -74,9 +74,12 @@ class UserProfile(APIView):
             return None
 
     def get(self, request, username, format=None):
-
-
-        user = self.get_user(username)
+        print(username);
+        if username is None:
+            loggedInUser = request.user
+            user = self.get_user(loggedInUser.username)
+        else: 
+            user = self.get_user(username)
         
         if user is None:
         
@@ -201,6 +204,17 @@ class ChangePassword(APIView):
         return Response(status=status.HTTP_200_OK)
 
 user_change_password_view = ChangePassword.as_view()
+
+class UserInfo(APIView):
+
+    def get(self, request, format=None):
+
+        user = request.user
+        serializer = serializers.UserInfoSerializer(user)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+user_info_view = UserInfo.as_view()
 
 class FacebookLogin(SocialLoginView):
     adapter_class = FacebookOAuth2Adapter

@@ -47,7 +47,15 @@ class ListUserSerializer(serializers.ModelSerializer):
                 return True
         return False
             
+class UserInfoSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = models.User
+        fields = (
+            'profile_image',
+            'username',
+            'name',
+        )    
 
 
 class SignUpSerializer(RegisterSerializer):
