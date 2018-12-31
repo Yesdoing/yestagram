@@ -4,12 +4,30 @@ import Navigation from "./Presenter";
 class Container extends Component {
   state = {
     term: "",
-    notiToggle: false
+    notiToggle: false,
+    loading: true,
   };
+
+
+  componentDidMount() {
+    const { getUserInfo } = this.props;
+    if(!this.props.userInfo) getUserInfo();
+    else this.setState({loading: false});
+  }
+
+  static getDerivedStateFromProps(props, state) {
+      if (props.userInfo) {
+        return {
+          loading: false
+        };
+      } 
+      return true;
+  }
 
   render() {
     const { _handleInputChange, _handleSubmit, _handleNotiToggle } = this;
-    const { term, notiToggle } = this.state;
+    const { term, notiToggle, loading } = this.state;
+    const { userInfo } = this.props;
     return (
       <Navigation
         handleInputChange={_handleInputChange}
@@ -17,6 +35,8 @@ class Container extends Component {
         handleNotiToggle={_handleNotiToggle}
         toggle={notiToggle}
         value={term}
+        loading={loading}
+        userInfo={userInfo}
       />
     );
   }
