@@ -1,4 +1,7 @@
 .profile {
+    width: 100%;
+    max-width: $max-page-width;
+    margin: 0 auto;
     .loading {
         width: 100%;
         min-height: 300px;
@@ -6,4 +9,101 @@
         align-items: center;
         justify-content: center;
     }
+}
+
+.profileHeader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 96px;
+    @include breakpoint("phone-tablet") {
+        border-bottom: 1px solid #efefef;
+    }
+
+        .profile-image {
+            flex: 1;
+            text-align: center;
+            img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                box-sizing: border-box;
+                @include breakpoint("phone-tablet") {
+                    width: 77px;
+                    height: 77px;
+                }
+            }
+        }
+        .profile-info {
+            flex: 1;
+
+            .column {
+                display: flex;
+                margin-bottom: 25px;
+                align-items: center;
+                @include breakpoint("phone-tablet") {
+                    margin-top: 30px;
+                    justify-content: center;
+                }
+                &:nth-child(2) {
+                    @include breakpoint("phone-tablet") {
+                        text-align: center;
+                        border-top: 1px solid #efefef;
+                        border-bottom: 1px solid #efefef;
+                        padding: 12px 0;
+                        margin: 0 auto;
+                    }
+                }
+
+                .username {
+                    font-size: 28px;
+                    line-height: 32px;
+                    white-space: nowrap;
+                }
+                .edit-button {
+                    -webkit-appearance: none;
+                    border-radius: 3px;
+                    color: black;
+                    cursor: pointer;
+                    font-weight: 600;
+                    background-color: transparent;
+                    border: 1px solid #E9E9E9;
+                    font-size: $nomal-font-size;
+                    line-height: 26px;
+                    &:focus, &:active {
+                        outline: none;
+                    }
+                    &:focus {
+                        opacity: 0.7;
+                    }
+                    margin-left: 20px;
+                }
+                .setting-icon {
+                    cursor: pointer;
+                    margin-left: 10px;
+                }
+                .counts {
+                    font-size: $big-font-size;
+                    margin-right: 40px;
+                    @include breakpoint("phone-tablet") {
+                        margin: 0 20px;
+                    }
+                    .number {
+                        font-weight: 600;
+                    }
+                }
+                .name {
+                    font-size: 18px;
+                    font-weight: 600;
+                    line-height: 24px;
+                    word-wrap: break-word;
+                }
+            }
+        }
+}
+
+.user-image-list {
+    display: flex;
+    flex-wrap: wrap;
 }

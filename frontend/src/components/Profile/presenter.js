@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import IosSettings from 'react-ionicons/lib/IosSettings';
 import Loading from 'common/Loading';
+import PhotoDisplay from 'components/PhotoDisplay';
 
 const Profile = (props, context) => (
     <div className={styles.profile}>
@@ -15,6 +16,9 @@ const Profile = (props, context) => (
 const RenderProfile = (props, context) => (
     <div className={styles.profile}>
         <ProfileHeader {...props.userProfile} />
+        {
+            props.userProfile.images.length > 0 && <RenderImageList imageList={props.userProfile.images} />
+        }
     </div>
 )
 
@@ -27,9 +31,9 @@ const ProfileHeader = (props, context) => (
                 <button className={styles.editButton}>
                     Edit Profile
                 </button>
-                <span className={styles.settingIcon}>
+                <div className={styles.settingIcon}>
                     <IosSettings fontSize="24px" color="black" />
-                </span>
+                </div>
             </div>
             <div className={styles.column}>
                 <span className={styles.counts}>
@@ -46,6 +50,16 @@ const ProfileHeader = (props, context) => (
                 <span className={styles.name}>{props.name}</span>
             </div>
         </div>
+    </div>
+);
+
+const RenderImageList = props => (
+    <div className={styles.userImageList}>
+        {
+            props.imageList.map(image => (
+                <PhotoDisplay {...image} key={image.id} />
+            ))
+        }
     </div>
 );
 

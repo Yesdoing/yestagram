@@ -5,7 +5,12 @@
     overflow: hidden;
     position: relative;
     margin-right: 28px;
-
+    @include breakpoint("phone-tablet") {
+        height: 30%;
+        margin-right: 12px;
+        margin-bottom: 25px;
+    }
+ 
  .photo-image {
     max-width: 100%;
     min-height: 100%;
@@ -26,6 +31,9 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
+    @include breakpoint("phone-tablet") {
+        height: 80%;
+    }
     .data {
         color: white;
         font-weight: 600;
