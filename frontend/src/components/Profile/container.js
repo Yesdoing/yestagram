@@ -9,8 +9,14 @@ class Container extends Component {
 
     componentDidMount() {
         const { getProfile } = this.props;
-        if(!this.props.userProfile) getProfile();
-        else this.setState({loading: false});
+        getProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { getProfile } = this.props;
+        if(prevProps.match.params.username !== this.props.match.params.username) {
+            getProfile();
+        }
     }
 
     static getDerivedStateFromProps(props, state) {

@@ -1,21 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
-import FollowBtn from 'common/FollowBtn';
+import { Link } from "react-router-dom";
+import FollowBtn from "common/FollowBtn";
 
 const UserDisplay = (props, context) => (
   <div className={props.vertical ? styles.vertical : styles.horizontal}>
-    <div className={styles.column}>
-      <img
-        className={styles.profileImage}
-        src={props.user.profile_image || require("images/noPhoto.jpg")}
-        alt={props.user.username}
-      />
-      <div className={styles.user}>
-        <span className={styles.username}>{props.user.username}</span>
-        <span className={styles.name}>{props.user.name}</span>
+    <Link to={`/profile/${props.user.username}`} style={{textDecoration: "none", color: "black"}}>
+      <div className={styles.column}>
+        <img
+          className={styles.profileImage}
+          src={props.user.profile_image || require("images/noPhoto.jpg")}
+          alt={props.user.username}
+        />
+        <div className={styles.user}>
+          <span className={styles.username}>{props.user.username}</span>
+          <span className={styles.name}>{props.user.name}</span>
+        </div>
       </div>
-    </div>
+    </Link>
     <span className={styles.column}>
       <FollowBtn user={props.user} />
     </span>
@@ -34,7 +37,7 @@ UserDisplay.propTypes = {
     profile_image: PropTypes.string,
     following: PropTypes.bool.isRequired
   }).isRequired,
-  vertical: PropTypes.bool,
+  vertical: PropTypes.bool
 };
 
 UserDisplay.defaultProps = {
