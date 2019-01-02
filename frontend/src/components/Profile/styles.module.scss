@@ -86,11 +86,15 @@
                 .counts {
                     font-size: $big-font-size;
                     margin-right: 40px;
+                    cursor: pointer;
                     @include breakpoint("phone-tablet") {
                         margin: 0 20px;
                     }
                     .number {
                         font-weight: 600;
+                    }
+                    &:first-child {
+                        cursor: default;
                     }
                 }
                 .name {

@@ -4,20 +4,30 @@ import styles from './styles.module.scss';
 import IosSettings from 'react-ionicons/lib/IosSettings';
 import Loading from 'common/Loading';
 import PhotoDisplay from 'components/PhotoDisplay';
+import UserList from 'components/UserList';
 
 const Profile = (props, context) => (
     <div className={styles.profile}>
         { props.loading ? <div className={styles.loading}><ProfileLoading /></div> : (
-            <RenderProfile userProfile={props.userProfile} />
+            <RenderProfile seeingFollow={props.seeingFollow} userProfile={props.userProfile} openFollow={props.openFollow} closeButton={props.closeFollow} />
         )}
     </div>
 );
 
+Profile.propTypes = {
+    openFollow: PropTypes.func.isRequired,
+    closeFollow: PropTypes.func.isRequired,
+    seeingFollow: PropTypes.string.isRequired,
+}
+
 const RenderProfile = (props, context) => (
     <div className={styles.profile}>
-        <ProfileHeader {...props.userProfile} />
+        <ProfileHeader {...props.userProfile} openFollow={props.openFollow} />
         {
             props.userProfile.images.length > 0 && <RenderImageList imageList={props.userProfile.images} />
+        }
+        {
+            props.seeingFollow !== "" && <UserList title={props.seeingFollow} closeButton={props.closeButton} />
         }
     </div>
 )
@@ -39,10 +49,10 @@ const ProfileHeader = (props, context) => (
                 <span className={styles.counts}>
                     <span className={styles.number}>{props.post_count}</span>{" "}posts
                 </span>
-                <span className={styles.counts}>
+                <span className={styles.counts} onClick={() => props.openFollow("followers")}>
                     <span className={styles.number}>{props.followers_count}</span>{" "}followers
                 </span>
-                <span className={styles.counts}>
+                <span className={styles.counts} onClick={() => props.openFollow("following")}>
                     <span className={styles.number}>{props.following_count}</span>{" "}following
                 </span>
             </div>

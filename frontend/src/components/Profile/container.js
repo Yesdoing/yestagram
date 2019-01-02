@@ -1,38 +1,56 @@
-import React, { Component } from 'react';
-import Profile from './presenter';
+import React, { Component } from "react";
+import Profile from "./presenter";
 
 class Container extends Component {
+  state = {
+    loading: true,
+    seeingFollow: ""
+  };
 
-    state = {
-        loading: true
+  componentDidMount() {
+    const { getProfile } = this.props;
+    getProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { getProfile } = this.props;
+    if (prevProps.match.params.username !== this.props.match.params.username) {
+      getProfile();
     }
+  }
 
-    componentDidMount() {
-        const { getProfile } = this.props;
-        getProfile();
+  static getDerivedStateFromProps(props, state) {
+    if (props.userProfile) {
+      return {
+        loading: false
+      };
     }
+    return true;
+  }
 
-    componentDidUpdate(prevProps, prevState) {
-        const { getProfile } = this.props;
-        if(prevProps.match.params.username !== this.props.match.params.username) {
-            getProfile();
-        }
+  render() {
+    const { userProfile } = this.props;
+    const { _openFollow, _closeFollow} = this;
+    return <Profile userProfile={userProfile} {...this.state} openFollow={_openFollow} closeFollow={_closeFollow} />;
+  }
+
+  _openFollow = (followType) => {
+    const { getFollowingList, getFollowersList } = this.props;
+    this.setState({
+      seeingFollow: followType
+    });
+    if(followType === "following") {
+      getFollowingList();
+    } else if(followType === "followers") {
+      getFollowersList();
     }
+  };
 
-    static getDerivedStateFromProps(props, state) {
-        if(props.userProfile) {
-            return {
-                loading: false
-            };
-        }
-        return true;
-    }
-
-    render() {
-        const { userProfile } = this.props;
-        return <Profile userProfile={userProfile} {...this.state} />;
-    }
-
+  _closeFollow = () => {
+    this.setState({
+      seeingFollow: ""
+    });
+  };
 }
 
 export default Container;

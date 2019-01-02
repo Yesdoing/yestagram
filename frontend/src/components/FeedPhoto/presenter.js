@@ -30,7 +30,7 @@ const FeedPhoto = (props, context) => (
               <PhotoComments creator={props.creator.username} caption={props.caption} comments={props.comments} />
               <TimeStamp time={props.natural_time} />
               <CommentBox photoId={props.id} />
-              {props.seeingLikes && <UserList title={context.t("Likes")} closeLikes={props.closeLikes} />}
+              {props.seeingLikes && <UserList title={context.t("Likes")} closeButton={props.closeLikes} />}
           </div>
       </div> 
     );

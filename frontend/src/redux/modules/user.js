@@ -63,7 +63,7 @@ const setUserInfo = (userInfo) => ({
 const setProfile = (userProfile) => ({
     type: SET_PROFILE,
     userProfile
-})
+});
 
 // API actions
 
@@ -277,6 +277,32 @@ const getUserInfo = () => {
     };
 };
 
+const getFollowingList = (username) => {
+    return (dispatch, getState) => {
+        const { user: { token } } = getState();
+
+        fetch(`/users/${username}/following`, {
+            headers: {
+                Authorization: `JWT ${token}`
+            }
+        }).then( response => response.json())
+        .then(json => dispatch(setUserList(json)));
+    };
+};
+
+const getFollowersList = (username) => {
+    return (dispatch, getState) => {
+        const { user: { token } } = getState();
+
+        fetch(`/users/${username}/followers`, {
+            headers: {
+                Authorization: `JWT ${token}`
+            }
+        }).then( response => response.json())
+        .then(json => dispatch(setUserList(json)));
+    };
+};
+
 // initiail state
 const initiailState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
@@ -384,6 +410,7 @@ const applySetProfile = (state, action) => {
     };
 }
 
+
 // exports
 
 const actionCreators = {
@@ -397,7 +424,9 @@ const actionCreators = {
     getExplore,
     searchByTerm,
     getProfile,
-    getUserInfo
+    getUserInfo,
+    getFollowingList,
+    getFollowersList,
 };
 
 export { actionCreators };
