@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         getFollowersList: () => {
             dispatch(userActions.getFollowersList(username));
+        },
+        setUnLoadProfile: () => {
+            dispatch(userActions.setUnLoadProfile());
         }
     }
 }

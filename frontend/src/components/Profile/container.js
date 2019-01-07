@@ -13,10 +13,15 @@ class Container extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { getProfile } = this.props;
+    const { getProfile, setUnLoadProfile } = this.props;
     if (prevProps.match.params.username !== this.props.match.params.username) {
+      setUnLoadProfile();
       getProfile();
     }
+  }
+
+  componentWillUnmount() {
+    this.props.setUnLoadProfile();
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -25,7 +30,9 @@ class Container extends Component {
         loading: false
       };
     }
-    return true;
+    return {
+      loading: true
+    };
   }
 
   render() {

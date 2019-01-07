@@ -11,6 +11,7 @@ const UNFOLLOW_USER = "UNFOLLOW_USER";
 const SET_IMAGE_LIST = "SET_IMAGE_LIST";
 const SET_USER_INFO = "SET_USER_INFO";
 const SET_PROFILE = "SET_PROFILE";
+const UNLOAD_PROFILE = "UNLOAD_PROFILE";
 
 // action creators
 
@@ -49,7 +50,6 @@ const setUnFollowUser = (userId) => {
     };
 }
 
-
 const setImageList = (imageList) => ({
     type: SET_IMAGE_LIST,
     imageList
@@ -64,6 +64,10 @@ const setProfile = (userProfile) => ({
     type: SET_PROFILE,
     userProfile
 });
+
+const unloadProfile = () => ({
+    type: UNLOAD_PROFILE
+})
 
 // API actions
 
@@ -303,6 +307,13 @@ const getFollowersList = (username) => {
     };
 };
 
+const setUnLoadProfile = () => {
+    return (dispatch, getState) => {
+        dispatch(unloadProfile());
+    }
+}
+
+
 // initiail state
 const initiailState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
@@ -329,6 +340,8 @@ function reducer(state = initiailState, action) {
         return applySetUserInfo(state, action);
     case SET_PROFILE:
         return applySetProfile(state, action);
+    case UNLOAD_PROFILE:
+        return applyUnloadProfile(state, action);
     default:
       return state;
   }
@@ -410,6 +423,10 @@ const applySetProfile = (state, action) => {
     };
 }
 
+const applyUnloadProfile = (state, action) => ({
+    ...state,
+    userProfile: null
+});
 
 // exports
 
@@ -427,6 +444,7 @@ const actionCreators = {
     getUserInfo,
     getFollowingList,
     getFollowersList,
+    setUnLoadProfile,
 };
 
 export { actionCreators };
