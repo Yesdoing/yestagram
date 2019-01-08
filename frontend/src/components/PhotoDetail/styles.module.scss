@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 
   .close {
       position: fixed;
@@ -24,6 +25,9 @@
     margin: auto;
     align-items: stretch;
     background-color: white;
+    @include breakpoint('phone-tablet') {
+      flex-direction: column;
+    }
     .detail-img {
       height: 600px;
       width: 600px;
