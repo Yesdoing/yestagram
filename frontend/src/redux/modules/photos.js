@@ -171,43 +171,79 @@ const applySetFeed = (state, action) => {
     };
 }
 
+
 const applyLikePhoto = (state, action) => {
     const { photoId } = action;
     const { feed } = state;
-    const updateFeed = feed.map(photo => {
-        if(photo.id === photoId) {
-            return {...photo, is_liked: true, like_counts: photo.like_counts + 1};
-        }
-        return photo;
-    });
-    return {...state, feed: updateFeed};
+    if(feed) {
+        const updateFeed = feed.map(photo => {
+            if(photo.id === photoId) {
+                return {...photo, is_liked: true, like_counts: photo.like_counts + 1};
+            }
+            return photo;
+        });
+        return {...state, feed: updateFeed};    
+    } else {
+        return {
+            ...state,
+            photoDetail : {
+                ...state.photoDetail,
+                is_liked: true,
+                like_counts: state.photoDetail.like_counts + 1
+            }
+        };
+    }
 };
 
 const applyUnLikePhoto = (state, action) => {
     const { photoId } = action;
     const { feed } = state;
-    const updateFeed = feed.map(photo => {
-        if(photo.id === photoId) {
-            return {...photo, is_liked: false, like_counts: photo.like_counts - 1};
-        }
-        return photo;
-    });
-    return {...state, feed: updateFeed};
+    if(feed) {
+        const updateFeed = feed.map(photo => {
+            if(photo.id === photoId) {
+                return {...photo, is_liked: false, like_counts: photo.like_counts - 1};
+            }
+            return photo;
+        });
+        return {...state, feed: updateFeed};    
+    } else {
+        return {
+            ...state,
+            photoDetail : {
+                ...state.photoDetail,
+                is_liked: false,
+                like_counts: state.photoDetail.like_counts - 1
+            }
+        };
+    }
 };
 
 const applyAddComment = (state, action) => {
     const { photoId, comment } = action;
     const { feed } = state;
-    const updateFeed = feed.map(photo => {
-        if(photo.id === photoId) {
-            return {...photo, comments: [
-                ...photo.comments,
-                comment
-            ]}
+    if(feed) {
+        const updateFeed = feed.map(photo => {
+            if(photo.id === photoId) {
+                return {...photo, comments: [
+                    ...photo.comments,
+                    comment
+                ]}
+            }
+            return photo;
+        });
+        return {...state, feed: updateFeed};    
+    } else {
+        return {
+            ...state,
+            photoDetail: {
+                ...state.photoDetail,
+                comments: [
+                    ...state.photoDetail.comments,
+                    comment
+                ]
+            }
         }
-        return photo;
-    });
-    return {...state, feed: updateFeed};
+    }
 }
 
 const applySetPhotoDetail = (state, action) => {
