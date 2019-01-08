@@ -2,12 +2,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Container from './container';
 import { actionCreators as userActions } from 'redux/modules/user';
+import { actionCreators as photoActions } from 'redux/modules/photos';
 
 const mapStateToProps = (state, ownProps) => {
-    const { user: { userProfile, userList }} = state;
+    const { user: { userProfile, userList }, photos: { photoDetail }} = state;
     return {
         userProfile,
-        userList
+        userList,
+        photoDetail,
     }
 }
 
@@ -25,6 +27,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         setUnLoadProfile: () => {
             dispatch(userActions.setUnLoadProfile());
+        },
+        getPhotoDetail: (photoId) => {
+            dispatch(photoActions.getPhotoDetail(photoId));
         }
     }
 }

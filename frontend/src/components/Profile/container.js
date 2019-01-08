@@ -4,7 +4,8 @@ import Profile from "./presenter";
 class Container extends Component {
   state = {
     loading: true,
-    seeingFollow: ""
+    seeingFollow: "",
+    photoDetailToggle: true
   };
 
   componentDidMount() {
@@ -36,19 +37,29 @@ class Container extends Component {
   }
 
   render() {
-    const { userProfile } = this.props;
-    const { _openFollow, _closeFollow} = this;
-    return <Profile userProfile={userProfile} {...this.state} openFollow={_openFollow} closeFollow={_closeFollow} />;
+    const { userProfile, photoDetail } = this.props;
+    const { _openFollow, _closeFollow, _openPhotoDetail, _closePhotoDetail } = this;
+    return (
+      <Profile
+        userProfile={userProfile}
+        {...this.state}
+        openFollow={_openFollow}
+        closeFollow={_closeFollow}
+        openPhotoDetail={_openPhotoDetail}
+        closePhotoDetail={_closePhotoDetail}
+        photoDetail={photoDetail}
+      />
+    );
   }
 
-  _openFollow = (followType) => {
+  _openFollow = followType => {
     const { getFollowingList, getFollowersList } = this.props;
     this.setState({
       seeingFollow: followType
     });
-    if(followType === "following") {
+    if (followType === "following") {
       getFollowingList();
-    } else if(followType === "followers") {
+    } else if (followType === "followers") {
       getFollowersList();
     }
   };
@@ -56,6 +67,20 @@ class Container extends Component {
   _closeFollow = () => {
     this.setState({
       seeingFollow: ""
+    });
+  };
+
+  _openPhotoDetail = photoId => {
+    const { getPhotoDetail } = this.props;
+    this.setState({
+      photoDetailToggle: false
+    });
+    getPhotoDetail(photoId);
+  };
+
+  _closePhotoDetail = () => {
+    this.setState({
+      photoDetailToggle: true
     });
   };
 }

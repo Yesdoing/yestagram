@@ -6,6 +6,8 @@ const SET_FEED = "SET_FEED";
 const LIKE_PHOTO = "LIKE_PHOTO";
 const UNLIKE_PHOTO = "UNLIKE_PHOTO";
 const ADD_COMMENT = "ADD_COMMENT";
+const SET_PHOTO_DETAIL = "SET_PHOTO_DETAIL"
+const INITIALIZE = "INITIALIZE";
 
 // action creators
 const setFeed = (feed) => ({
@@ -29,6 +31,14 @@ const addComment = (photoId, comment) => ({
     comment
 });
 
+const setPhotoDetail = (photoDetail) => ({
+    type: SET_PHOTO_DETAIL,
+    photoDetail
+})
+
+const initial = () => ({
+    type: INITIALIZE
+});
 // api actions 
 function getFeed() {
     return (dispatch, getState) => {
@@ -110,6 +120,25 @@ const commentPhoto = (photoId, message) => {
     }
 }
 
+const getPhotoDetail = (photoId) => {
+    return (dispatch, getState) => {
+        const { user: {token}} = getState();
+        fetch(`/images/${photoId}`, {
+            headers: {
+                Authorization: `JWT ${token}`,
+                "Content-type": "application/json"
+            }
+        }).then(response => response.json())
+        .then(json => dispatch(setPhotoDetail(json)));
+    };
+};
+
+const initialize = () => {
+    return (dispatch, getState) => {
+        dispatch(initial());
+    }
+}
+
 // initial state 
 const initialState = {
 };
@@ -125,6 +154,10 @@ const reducer = (state = initialState, action) => {
             return applyUnLikePhoto(state, action);
         case ADD_COMMENT:
             return applyAddComment(state, action);
+        case SET_PHOTO_DETAIL:
+            return applySetPhotoDetail(state, action);
+        case INITIALIZE:
+            return applyInitialize(state, action);
         default:
             return state;
     }
@@ -177,12 +210,30 @@ const applyAddComment = (state, action) => {
     return {...state, feed: updateFeed};
 }
 
+const applySetPhotoDetail = (state, action) => {
+    const { photoDetail } = action;
+    return {
+        ...state,
+        photoDetail
+    };
+}
+
+const applyInitialize = (state, action) => {
+    return {
+        ...state,
+        feed: null,
+        photoDetail: null
+    };
+}
+
 // exports 
 const actionCreators = {
     getFeed,
     likePhoto,
     unLikePhoto,
     commentPhoto,
+    getPhotoDetail,
+    initialize
 };
 
 export { actionCreators };

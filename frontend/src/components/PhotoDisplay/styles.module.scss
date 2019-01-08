@@ -5,6 +5,7 @@
     overflow: hidden;
     position: relative;
     margin-right: 28px;
+    cursor: pointer;
     @include breakpoint("phone-tablet") {
         height: 30%;
         margin-right: 12px;

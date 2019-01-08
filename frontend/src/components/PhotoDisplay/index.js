@@ -6,7 +6,7 @@ import IosText from 'react-ionicons/lib/IosText';
 
 
 const PhotoDisplay = props => (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={()=>props.openPhotoDetail(props.id)}>
         <img src={props.file} alt="None Resource" className={styles.photoImage} />
         <div className={styles.overlay}>
             <span className={styles.data}>
@@ -24,7 +24,7 @@ const PhotoDisplay = props => (
 PhotoDisplay.propTypes = {
     file: PropTypes.string.isRequired,
     like_counts: PropTypes.number.isRequired,
-    comment_counts: PropTypes.number.isRequired
+    comment_counts: PropTypes.number.isRequired,
 };
 
 export default PhotoDisplay;
