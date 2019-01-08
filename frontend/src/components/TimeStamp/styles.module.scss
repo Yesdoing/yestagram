@@ -4,4 +4,7 @@
     text-transform: uppercase;
     margin-bottom: 10px;
     display: block;
+    &.isModal {
+        order: 3;
+    }
 }

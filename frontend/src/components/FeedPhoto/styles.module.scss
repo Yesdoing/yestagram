@@ -1,45 +1,132 @@
 .feed-photo {
-    @include boxBorder(yes);
-    width: 100%;
-    max-width: $max-card-width;
-    margin-bottom: 60px;
-    @include breakpoint("phone") {
-        background-color: transparent;
-        border: 0;
-        margin-bottom: 30px;
+  @include boxBorder(yes);
+  width: 100%;
+  max-width: $max-card-width;
+  margin-bottom: 60px;
+  @include breakpoint("phone") {
+    background-color: transparent;
+    border: 0;
+    margin-bottom: 30px;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .header {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    .profile-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 15px;
     }
-    &:last-child {
-        margin-bottom: 0;
-    }    
-    .header {
-        padding: 15px;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid $border-color;
-        .profile-image {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-        .header-column {
-            display: flex;
-            flex-direction: column;
-            .creator {
-                font-weight: 600;
-                margin-bottom: 5px;
-            }
-            .location {
-                font-size: $small-font-size;
-            }
-        }   
+    .header-column {
+      display: flex;
+      flex-direction: column;
+      .creator {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .location {
+        font-size: $small-font-size;
+      }
     }
+  }
+  .photoImg {
     .feed_image {
-        max-height: 721px;
+      max-height: 721px;
     }
-    .meta {
-        padding: 15px;
-        padding-top: 10px;
-        padding-bottom: 0;
+  }
+  .meta {
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
+}
+
+.isModal {
+  @include boxBorder(yes);
+  width: 100%;
+  max-width: $max-page-width;
+  @include breakpoint("phone") {
+    background-color: transparent;
+    border: 0;
+    margin-bottom: 30px;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: stretch;
+  box-sizing: border-box;
+  position: relative;
+  .header {
+    position: absolute;
+    right: 24px;
+    top: 0;
+    width: 287px;
+    padding: 20px 0;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    .profile-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 15px;
     }
+    .header-column {
+      display: flex;
+      flex-direction: column;
+      .creator {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .location {
+        font-size: $small-font-size;
+      }
+    }
+  }
+  .photoImg {
+    position: relative;
+    min-height: 450px;
+    margin-right: 335px;
+    display: flex;
+    justify-content: center;
+    background-color: $dark-grey;
+    .feed-image {
+      min-height: 450px;
+      margin-right: 335px;
+      box-sizing: border-box;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    }
+  }
+  .meta {
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    position: absolute;
+    top: 78px;
+    right: 0;
+    width: 335px;
+    padding-left: 24px;
+    padding-right: 24px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
 }

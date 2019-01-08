@@ -4,7 +4,7 @@ import Textarea from "react-textarea-autosize";
 import styles from "./styles.module.scss";
 
 const CommentBox = (props, context) => (
-  <form className={styles.commentBox}>
+  <form className={`${styles.commentBox} ${props.isModal ? styles.isModal : ''}`}>
     <Textarea
       className={styles.input}
       placeholder={context.t("Add a comment...")}

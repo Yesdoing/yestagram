@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
 
 const PhotoComments = props => (
-  <div className={styles.photoComments}>
+  <div className={`${styles.photoComments} ${props.isModal ? styles.isModal : ''}`}>
     <ul className={styles.list}>
       <Comment username={props.creator} comment={props.caption} />
       {props.comments.map(comment => (

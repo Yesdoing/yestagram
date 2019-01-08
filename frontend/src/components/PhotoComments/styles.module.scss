@@ -1,6 +1,17 @@
 .photo-comments {
     margin-bottom: 12px;
+    &.isModal {
+        order: 1;
+        padding: 12px 24px;
+        margin: 0 -24px;
+        overflow-x: hidden;
+        flex-shrink: 1;
+        flex-grow: 1;
+        overflow: auto;
+        min-height: 0;
+    }
     .list {
+        flex-grow: 1;
     }
 }
 

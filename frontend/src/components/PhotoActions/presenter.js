@@ -6,7 +6,7 @@ import IosTextOutline from 'react-ionicons/lib/IosTextOutline';
 import styles from './styles.module.scss';
 
 const PhotoActions = (props, context) => (
-    <div className={styles.photoActions}>
+    <div className={`${styles.photoActions} ${props.isModal ? styles.isModal : ''}`}>
         <div className={styles.icons}>
             <span className={styles.icon} onClick={props.handleHeartClick}>
                 {

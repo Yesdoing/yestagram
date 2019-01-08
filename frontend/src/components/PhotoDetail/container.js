@@ -24,7 +24,6 @@ class Container extends Component {
     }
 
     render() {
-        console.log(this.props);
         return <PhotoDetail {...this.state} {...this.props} />
     }
 }
