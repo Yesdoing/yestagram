@@ -9,6 +9,7 @@ import Feed from 'components/Feed';
 import Explore from 'components/Explore';
 import Search from 'components/Search';
 import Profile from 'components/Profile';
+import PhotoCreate from 'components/PhotoCreate';
 
 const App = props => [
     props.isLoggedIn ? <Navigation key={0} /> : null,
@@ -27,6 +28,7 @@ const PrivateRoute = props => (
         <Route path="/explore" component={Explore}/>
         <Route path="/search/:searchTerm" component={Search} />
         <Route path="/profile/:username" component={Profile} />
+        <Route path="/photos" component={PhotoCreate} />
     </Switch>
 );
 

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import IosCompassOutline from "react-ionicons/lib/IosCompassOutline";
 import MdHeartOutline from "react-ionicons/lib/MdHeartOutline";
+import MdAdd from 'react-ionicons/lib/MdAdd';
 import MdPerson from "react-ionicons/lib/MdPerson";
 import { Link } from "react-router-dom";
 import Notification from "components/Notification";
@@ -55,6 +56,13 @@ const Navigation = (props, context) => {
             )}
           </div>
         </div>
+      </div>
+      <div className={styles.addPhoto}>
+        <Link to="/photos">
+          <button className={styles.addBtn}>
+              <MdAdd fontSize="32px" color="white" />
+          </button>
+        </Link>
       </div>
     </div>
   );

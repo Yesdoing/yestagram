@@ -38,7 +38,7 @@ class Images(APIView):
     def post(self, request, format=None):
 
         user = request.user
-
+        print(request.data)
         serializer = serializers.InputImageSerializer(data=request.data)
 
         if serializer.is_valid():

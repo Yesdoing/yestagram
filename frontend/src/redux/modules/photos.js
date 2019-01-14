@@ -8,6 +8,7 @@ const UNLIKE_PHOTO = "UNLIKE_PHOTO";
 const ADD_COMMENT = "ADD_COMMENT";
 const SET_PHOTO_DETAIL = "SET_PHOTO_DETAIL"
 const INITIALIZE = "INITIALIZE";
+const ADD_PHOTO = "ADD_PHOTO";
 
 // action creators
 const setFeed = (feed) => ({
@@ -39,6 +40,11 @@ const setPhotoDetail = (photoDetail) => ({
 const initial = () => ({
     type: INITIALIZE
 });
+
+const addPhoto = () => ({
+    type: ADD_PHOTO
+});
+
 // api actions 
 function getFeed() {
     return (dispatch, getState) => {
@@ -138,6 +144,27 @@ const initialize = () => {
         dispatch(initial());
     }
 }
+
+const addPhotoImage = (file, location, caption, tags) => {
+    const arrTags = tags.split(",");
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('location', location);
+    formData.append('caption', caption);
+    formData.append('tags', JSON.stringify(arrTags));
+
+    return (dispatch, getState) => {
+        const { user: { token } } = getState();
+        fetch(`/images/`, {
+            method: "POST",
+            headers: {
+                "Authorization": `JWT ${token}`
+            },
+            body: formData
+        }).then(response => response.json())
+        .then(json => console.log(json));
+    };
+};
 
 // initial state 
 const initialState = {
@@ -269,6 +296,7 @@ const actionCreators = {
     unLikePhoto,
     commentPhoto,
     getPhotoDetail,
+    addPhotoImage,
     initialize
 };
 
