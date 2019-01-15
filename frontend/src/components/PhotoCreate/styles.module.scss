@@ -15,7 +15,9 @@
       flex: 1;
       background-color: $light-grey;
       min-height: 520px;
-      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       .img-column {
         img {
           width: 100%;

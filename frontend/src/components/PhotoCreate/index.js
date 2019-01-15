@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Container from './container';
+import { withRouter } from 'react-router-dom';
 import { actionCreators as photoActions } from 'redux/modules/photos';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -10,4 +11,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 }
 
-export default connect(null, mapDispatchToProps)(Container);
+export default connect(null, mapDispatchToProps)(withRouter(Container));

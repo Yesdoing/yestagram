@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import MdImage from "react-ionicons/lib/MdImage";
 import styles from "./styles.module.scss";
+import Loading from "common/Loading";
+import MdRefresh from 'react-ionicons/lib/MdRefresh';
 
 const PhotoCreate = (props, context) => (
   <div className={styles.photoCreate}>
@@ -42,6 +44,7 @@ const PhotoCreate = (props, context) => (
             className={styles.inputText}
             onChange={props.handleChangeValue}
             name="location"
+            value={props.location}
           />
         </div>
         <div className={styles.column}>
@@ -52,26 +55,34 @@ const PhotoCreate = (props, context) => (
             className={styles.inputText}
             onChange={props.handleChangeValue}
             name="caption"
+            value={props.caption}
           />
         </div>
         <div className={styles.column}>
           <label htmlFor="tags">Tags</label>
           <input
             type="text"
-            placeholder="please, use separate ,"
+            placeholder="Please Use # to separate tags."
             className={styles.inputText}
             onChange={props.handleChangeValue}
             name="tags"
+            value={props.tags}
           />
         </div>
         <div className={styles.column}>
-          <button
-            type="submit"
-            className={styles.button}
-            onClick={props.handleSubmit}
-          >
-            Submit
-          </button>
+          {props.isSubmitting ? (
+            <button type="button" className={styles.button}>
+              <MdRefresh fontSize="32px" color="white" rotate={true} />
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className={styles.button}
+              onClick={props.handleSubmit}
+            >
+              Upload Photo
+            </button>
+          )}
         </div>
       </form>
     </div>
@@ -82,7 +93,11 @@ PhotoCreate.propTypes = {
   handleChangeFile: PropTypes.func.isRequired,
   handleChangeValue: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  preview: PropTypes.string
+  preview: PropTypes.string,
+  location: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  isSubmitting: PropTypes.bool.isRequired
 };
 
 export default PhotoCreate;

@@ -3,38 +3,36 @@ import PhotoCreate from "./presenter";
 
 class Container extends Component {
   state = {
-    uploading: false,
     file: null,
     location: "",
     caption: "",
     tags: "",
-    preview: ""
+    preview: "",
+    isSubmitting: false
   };
 
   render() {
     const { _handleChangeFile, _handleChangeValue, _handleSubmit } = this;
+    const { file, location, caption, tags, preview, isSubmitting } = this.state;
     return (
       <PhotoCreate
         handleChangeValue={_handleChangeValue}
         handleChangeFile={_handleChangeFile}
         handleSubmit={_handleSubmit}
-        preview={this.state.preview}
+        {...this.state}
       />
     );
   }
 
   _handleChangeFile = e => {
     const files = Array.from(e.target.files);
+    
     let preview;
     if (files.length === 0) {
-        this.setState({ uploading: false });
-        preview = "";
+      preview = "";
     } else {
-        this.setState({ uploading: true });
-         preview = window.URL.createObjectURL(files[0]);
+      preview = window.URL.createObjectURL(files[0]);
     }
-
-    
 
     this.setState({
       file: files[0],
@@ -51,11 +49,24 @@ class Container extends Component {
     });
   };
 
-  _handleSubmit = e => {
-    const { addPhotoImage } = this.props;
-    const { file, location, caption, tags } = this.state;
+  _handleSubmit = async e => {
     e.preventDefault();
-    addPhotoImage(file, location, caption, tags);
+    const { addPhotoImage, history } = this.props;
+    console.log(this.props);
+    const { file, location, caption, tags } = this.state;
+    if(file && location && caption && tags) {
+      this.setState({
+        isSubmitting: true
+      });
+      try {
+        await addPhotoImage(file, location, caption, tags);
+        history.push("/");
+      } catch(e) {
+        console.log(e);
+      }
+    } else {
+      alert("All Fields are required!!");
+    }
   };
 }
 

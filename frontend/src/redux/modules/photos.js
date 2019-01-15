@@ -1,5 +1,6 @@
 // imports
 import { actionCreators as userActions} from 'redux/modules/user';
+import uuidv1 from 'uuid/v1';
 
 // actions 
 const SET_FEED = "SET_FEED";
@@ -41,9 +42,6 @@ const initial = () => ({
     type: INITIALIZE
 });
 
-const addPhoto = () => ({
-    type: ADD_PHOTO
-});
 
 // api actions 
 function getFeed() {
@@ -146,12 +144,12 @@ const initialize = () => {
 }
 
 const addPhotoImage = (file, location, caption, tags) => {
-    const arrTags = tags.split(",");
+    const arrTags = tags.replace(/(\s*)/g, "").split("#");
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', file, `${uuidv1()}.jpg`);
     formData.append('location', location);
     formData.append('caption', caption);
-    formData.append('tags', JSON.stringify(arrTags));
+    formData.append('tags', JSON.stringify(arrTags.slice(1)));
 
     return (dispatch, getState) => {
         const { user: { token } } = getState();
@@ -161,8 +159,18 @@ const addPhotoImage = (file, location, caption, tags) => {
                 "Authorization": `JWT ${token}`
             },
             body: formData
-        }).then(response => response.json())
-        .then(json => console.log(json));
+        }).then(response => {
+            if(response.status === 401) {
+                dispatch(userActions.logout());
+            } else if (response.ok) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+        .catch(err => {
+            throw(err);
+        });
     };
 };
 
