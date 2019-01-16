@@ -20,5 +20,9 @@ const PhotoDetail = (props, context) => (
   </div>
 );
 
+PhotoDetail.propTypes = {
+  closePhotoDetail: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired  
+}
 
 export default PhotoDetail;

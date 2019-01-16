@@ -9,7 +9,6 @@ const UNLIKE_PHOTO = "UNLIKE_PHOTO";
 const ADD_COMMENT = "ADD_COMMENT";
 const SET_PHOTO_DETAIL = "SET_PHOTO_DETAIL"
 const INITIALIZE = "INITIALIZE";
-const ADD_PHOTO = "ADD_PHOTO";
 
 // action creators
 const setFeed = (feed) => ({

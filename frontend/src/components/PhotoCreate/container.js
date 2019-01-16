@@ -13,7 +13,6 @@ class Container extends Component {
 
   render() {
     const { _handleChangeFile, _handleChangeValue, _handleSubmit } = this;
-    const { file, location, caption, tags, preview, isSubmitting } = this.state;
     return (
       <PhotoCreate
         handleChangeValue={_handleChangeValue}

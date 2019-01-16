@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import MdImage from "react-ionicons/lib/MdImage";
 import styles from "./styles.module.scss";
-import Loading from "common/Loading";
 import MdRefresh from 'react-ionicons/lib/MdRefresh';
 
 const PhotoCreate = (props, context) => (
