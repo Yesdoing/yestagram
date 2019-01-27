@@ -11,6 +11,7 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
+    path("ping", views.HealthCheckView.as_view(), name="ping"),
     path(
         "users/",
         include("instagram.users.urls", namespace="users"),
