@@ -18,3 +18,14 @@ class ReactAppView(View):
                 """,
                 status=501,
             )
+
+class HealthCheckView(View):
+
+    def get(self, request):
+
+        return HttpResponse(
+            """
+            health check ok!!!!
+            """,
+            status=200
+        )
