@@ -19,10 +19,20 @@ Notification.propTypes = {
 
 const NotificationLoading = props => <Loading />;
 
-const NotificationList = (props, context) =>
-  props.noti.map(notification => (
-    <NotificationDisplay noti={notification} key={notification.id}/>
-  ));
+const NotificationList = (props, context) => {
+  if(props.noti.length > 0) {
+    return (props.noti.map(notification => (
+      <NotificationDisplay noti={notification} key={notification.id}/>
+    )));
+  } else {
+    return (
+      <div className={styles.noNoti}>
+        <span>You don't have Notifications</span>
+      </div>
+    )
+  }
+}
+  
 
 export default onClickOutside(Notification, {
   handleClickOutside(instance) {

@@ -7,4 +7,8 @@
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    .noFeed {
+        font-weight: 600;
+        color: $dark-blue;
+    }
 }

@@ -18,9 +18,22 @@ const FeedLoading = props => (
     </div>
 )
 
-const RenderFeed = props => (
-    <div className={styles.feed}>{props.feed.map(photo => <FeedPhoto {...photo} key={photo.id} />)}</div>
-);
+const RenderFeed = props => {
+    if(props.feed.length > 0) {
+        return (
+            <div className={styles.feed}>{props.feed.map(photo => <FeedPhoto {...photo} key={photo.id} />)}</div>
+        );
+    } else {
+        return (
+            <div className={styles.feed}>
+                <span className={styles.noFeed}>You don't have following. Please go to Explore</span>
+            </div>
+        );
+    }
+
+}
+    
+
 
 Feed.contextTypes = {
     t: PropTypes.func.isRequired,

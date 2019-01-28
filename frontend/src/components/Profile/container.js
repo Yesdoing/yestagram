@@ -22,7 +22,8 @@ class Container extends Component {
   }
 
   componentWillUnmount() {
-    this.props.setUnLoadProfile();
+    const { setUnLoadProfile } = this.props;
+    setUnLoadProfile();
   }
 
   static getDerivedStateFromProps(props, state) {
