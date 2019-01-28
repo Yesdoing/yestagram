@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch, ownPops) => {
     return {
         getFeed: () => {
             dispatch(photoActions.getFeed());
+        },
+        initialize: () => {
+            dispatch(photoActions.initialize());
         }
     }
 }

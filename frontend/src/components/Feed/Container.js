@@ -17,6 +17,11 @@ class Container extends Component {
     else this.setState({loading: false});
   }
 
+  componentWillUnmount() {
+    const { initialize } = this.props;
+    initialize();
+}
+
   static getDerivedStateFromProps(props, state) {
     if (props.feed) {
       return {
