@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://yestagram.s3.amazonaws.com/precache-manifest.f4cef7c60bba3f7290eebf9fecc17503.js"
+  "https://yestagram.s3.amazonaws.com/precache-manifest.f26d0d0fe37a1736180a698506eafd35.js"
 );
 
 workbox.clientsClaim();

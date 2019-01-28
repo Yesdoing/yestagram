@@ -8,10 +8,6 @@ self.__precacheManifest = [
     "url": "https://yestagram.s3.amazonaws.com/static/media/Phone.b8b300c6.png"
   },
   {
-    "revision": "1d8fab90473146245faeb4b3ace25f01",
-    "url": "https://yestagram.s3.amazonaws.com/static/media/Logo.1d8fab90.png"
-  },
-  {
     "revision": "f06b908907d5d4f2aaf733e2bee7ea8e",
     "url": "https://yestagram.s3.amazonaws.com/static/media/Android.f06b9089.png"
   },
@@ -20,23 +16,23 @@ self.__precacheManifest = [
     "url": "https://yestagram.s3.amazonaws.com/static/js/runtime~main.2e8bfc64.js"
   },
   {
-    "revision": "16d7dbc58644d2d37ed0",
-    "url": "https://yestagram.s3.amazonaws.com/static/js/main.16d7dbc5.chunk.js"
+    "revision": "d532771bf49628798c0b",
+    "url": "https://yestagram.s3.amazonaws.com/static/js/main.d532771b.chunk.js"
   },
   {
-    "revision": "92debab5f7654171d407",
-    "url": "https://yestagram.s3.amazonaws.com/static/js/1.92debab5.chunk.js"
+    "revision": "2139889a2e729f4b2f1c",
+    "url": "https://yestagram.s3.amazonaws.com/static/js/1.2139889a.chunk.js"
   },
   {
-    "revision": "16d7dbc58644d2d37ed0",
-    "url": "https://yestagram.s3.amazonaws.com/static/css/main.ae45e5da.chunk.css"
+    "revision": "d532771bf49628798c0b",
+    "url": "https://yestagram.s3.amazonaws.com/static/css/main.4880e31b.chunk.css"
   },
   {
-    "revision": "92debab5f7654171d407",
-    "url": "https://yestagram.s3.amazonaws.com/static/css/1.73b954c8.chunk.css"
+    "revision": "2139889a2e729f4b2f1c",
+    "url": "https://yestagram.s3.amazonaws.com/static/css/1.cc84c639.chunk.css"
   },
   {
-    "revision": "8e44a9313eacd292f36eea40353bf185",
+    "revision": "575e0e6d02e48c3d2784afe8bf71ae25",
     "url": "https://yestagram.s3.amazonaws.com/index.html"
   }
 ];
