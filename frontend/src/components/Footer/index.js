@@ -21,7 +21,7 @@ const Footer = (props, context) => (
             </nav>
         </div>
         <div className={styles.column}>
-            <span className={styles.copyright}>{context.t("© 2018 instagram")}</span>
+            <span className={styles.copyright}>{context.t("© 2018 Yestagram")}</span>
         </div>
     </footer>
 );
