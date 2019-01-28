@@ -21,11 +21,16 @@ const SignupForm = (props, context) => (
         <input type="username" placeholder={context.t("Username")} className={styles.textInput} value={props.usernameValue} onChange={props.handleChange} name="username" />
         <input type="password" placeholder={context.t("Password")} className={styles.textInput} value={props.passwordValue} onChange={props.handleChange} name="password"/>
         <button type="submit" className={styles.button} onClick={props.handleSubmit}>{context.t("Sign up")}</button>
+        { props.error.name ?  <ErrorMessage {...props.error} /> : null}
         <p className={styles.terms}>
           {context.t("By signing up, you agree to our ")}<span>{context.t("Terms, Data Policy and Cookies Policy")}</span>
         </p>
       </form>
     </div>
+  );
+
+  const ErrorMessage = props => (
+    <span className={styles.error}>{props.detail}</span>
   );
   
 

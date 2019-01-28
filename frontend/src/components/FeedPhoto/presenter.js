@@ -30,6 +30,7 @@ const FeedPhoto = (props, context) => (
         photoId={props.id}
         openLikes={props.openLikes}
         isModal={props.isModal}
+        focusTextInput={props.focusTextInput}
       />
       <PhotoComments
         creator={props.creator.username}
@@ -37,15 +38,18 @@ const FeedPhoto = (props, context) => (
         comments={props.comments}
         isModal={props.isModal}
       />
-      <TimeStamp time={props.natural_time} isModal={props.isModal}/>
-      <CommentBox photoId={props.id} isModal={props.isModal}/>
+      <TimeStamp time={props.natural_time} isModal={props.isModal} />
+      <CommentBox
+        photoId={props.id}
+        isModal={props.isModal}
+        setTextInputRef={props.setTextInputRef}
+      />
       {props.seeingLikes && (
         <UserList title={context.t("Likes")} closeButton={props.closeLikes} />
       )}
     </div>
   </div>
 );
-
 
 FeedPhoto.contextTypes = {
   t: PropTypes.func.isRequired
@@ -74,7 +78,9 @@ FeedPhoto.propTypes = {
   seeingLikes: PropTypes.bool.isRequired,
   closeLikes: PropTypes.func.isRequired,
   openLikes: PropTypes.func.isRequired,
-  isModal: PropTypes.bool
+  isModal: PropTypes.bool,
+  setTextInputRef: PropTypes.func.isRequired,
+  focusTextInput: PropTypes.func.isRequired
 };
 
 FeedPhoto.defaultProps = {

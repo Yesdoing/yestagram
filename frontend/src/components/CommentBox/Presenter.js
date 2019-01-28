@@ -11,6 +11,7 @@ const CommentBox = (props, context) => (
       value={props.comment}
       onChange={props.handleInputChange}
       onKeyPress={props.handleKeyPress}
+      inputRef={props.setTextInputRef}
     />
   </form>
 );
@@ -24,6 +25,7 @@ CommentBox.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   handleKeyPress: PropTypes.func.isRequired,
   photoId: PropTypes.number.isRequired,
+  setTextInputRef: PropTypes.func.isRequired,
 };
 
 export default CommentBox;

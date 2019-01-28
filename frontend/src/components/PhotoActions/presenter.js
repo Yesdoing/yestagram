@@ -15,7 +15,7 @@ const PhotoActions = (props, context) => (
                     (<MdHeartOutline fontSize="28px" color="black"/>)
                 } 
             </span>
-            <span className={styles.icon}>
+            <span className={styles.icon} onClick={props.focusTextInput}>
                 <IosTextOutline fontSize="28px" color="black"/>
             </span>
         </div>
@@ -32,6 +32,7 @@ PhotoActions.propTypes = {
     photoId: PropTypes.number.isRequired,
     handleHeartClick: PropTypes.func.isRequired,
     openLikes: PropTypes.func.isRequired,
+    focusTextInput: PropTypes.func.isRequired,
 }
 
 PhotoActions.contextTypes = {
