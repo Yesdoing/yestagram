@@ -22,8 +22,8 @@ class Container extends Component {
     }
 
     render() {
-        const { notificationList } = this.props;
-        return <Notification {...this.state} notificationList={notificationList} />
+        const { notificationList, handleNotiToggle } = this.props;
+        return <Notification {...this.state} notificationList={notificationList} handleNotiToggle={handleNotiToggle}/>
     }
 }
 

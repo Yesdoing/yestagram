@@ -25,14 +25,15 @@ class Container extends Component {
   }
 
   render() {
-    const { _handleInputChange, _handleSubmit, _handleNotiToggle } = this;
+    const { _handleInputChange, _handleSubmit, _handleNotiOpen, _handleNotiClose } = this;
     const { term, notiToggle, loading } = this.state;
     const { userInfo } = this.props;
     return (
       <Navigation
         handleInputChange={_handleInputChange}
         handleSubmit={_handleSubmit}
-        handleNotiToggle={_handleNotiToggle}
+        handleNotiOpen={_handleNotiOpen}
+        handleNotiClose={_handleNotiClose}
         toggle={notiToggle}
         value={term}
         loading={loading}
@@ -59,10 +60,16 @@ class Container extends Component {
     });
   };
 
-  _handleNotiToggle = event => {
-    const { notiToggle } = this.state;
+  _handleNotiOpen = event => {
     this.setState({
-      notiToggle: !notiToggle
+      notiToggle: true
+    });
+  }
+
+  _handleNotiClose = event => {
+    event.stopPropagation();
+    this.setState({
+      notiToggle: false
     });
   }
 }

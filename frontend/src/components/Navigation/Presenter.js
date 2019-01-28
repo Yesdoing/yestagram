@@ -42,9 +42,13 @@ const Navigation = (props, context) => {
             <MdHeartOutline
               fontSize="32px"
               color="black"
-              onClick={props.handleNotiToggle}
+              onClick={(e) => {
+                e.stopPropagation();
+                if(!props.toggle) props.handleNotiOpen();
+              }
+            }
             />
-            {props.toggle ? <Notification /> : null}
+            {props.toggle ? <Notification handleNotiToggle={props.handleNotiClose} /> : null}
           </div>
           <div className={styles.navIcon}>
             {props.loading ? (
@@ -73,7 +77,8 @@ Navigation.contextTypes = {
 };
 
 Navigation.propTypes = {
-  handleNotiToggle: PropTypes.func.isRequired,
+  handleNotiOpen: PropTypes.func.isRequired,
+  handleNotiClose: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired

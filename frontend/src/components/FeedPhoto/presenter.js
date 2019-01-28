@@ -6,17 +6,28 @@ import PhotoComments from "components/PhotoComments";
 import TimeStamp from "components/TimeStamp";
 import CommentBox from "components/CommentBox";
 import UserList from "components/UserList";
+import { Link } from "react-router-dom";
 
 const FeedPhoto = (props, context) => (
   <div className={props.isModal ? styles.isModal : styles.feedPhoto}>
     <header className={styles.header}>
-      <img
-        className={styles.profileImage}
-        src={props.creator.profile_image || require("images/noPhoto.jpg")}
-        alt={props.creator.username}
-      />
+      <Link
+        to={`/profile/${props.creator.username}`}
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <img
+          className={styles.profileImage}
+          src={props.creator.profile_image || require("images/noPhoto.jpg")}
+          alt={props.creator.username}
+        />
+      </Link>
       <div className={styles.headerColumn}>
-        <span className={styles.creator}>{props.creator.username}</span>
+        <Link
+          to={`/profile/${props.creator.username}`}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <span className={styles.creator}>{props.creator.username}</span>
+        </Link>
         <span className={styles.location}>{props.location}</span>
       </div>
     </header>
