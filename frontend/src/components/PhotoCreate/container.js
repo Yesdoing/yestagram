@@ -50,18 +50,19 @@ class Container extends Component {
 
   _handleSubmit = async e => {
     e.preventDefault();
-    const { addPhotoImage, history } = this.props;
-    console.log(this.props);
+    const { setInitializeFeed, addPhotoImage, history } = this.props;
     const { file, location, caption, tags } = this.state;
-    if(file && location && caption && tags) {
+    if (file && location && caption && tags) {
       this.setState({
         isSubmitting: true
       });
-      try {
-        await addPhotoImage(file, location, caption, tags);
+      const result = await addPhotoImage(file, location, caption, tags);
+      if(result) {
+        setInitializeFeed();
         history.push("/");
-      } catch(e) {
-        console.log(e);
+      } else {
+        alert("Sorry, You don't have authorization");
+        history.push("/"); 
       }
     } else {
       alert("All Fields are required!!");

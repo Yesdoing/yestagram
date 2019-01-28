@@ -5,8 +5,11 @@ import { actionCreators as photoActions } from 'redux/modules/photos';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addPhotoImage: (file, location, caption, tags) => {
-            dispatch(photoActions.addPhotoImage(file, location, caption, tags));
+        addPhotoImage: async (file, location, caption, tags) => {
+            return await dispatch(photoActions.addPhotoImage(file, location, caption, tags));
+        },
+        setInitializeFeed: () => {
+            dispatch(photoActions.initialize());
         }
     };
 }

@@ -150,28 +150,31 @@ const addPhotoImage = (file, location, caption, tags) => {
     formData.append('caption', caption);
     formData.append('tags', JSON.stringify(arrTags.slice(1)));
 
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         const { user: { token } } = getState();
-        fetch(`/images/`, {
-            method: "POST",
-            headers: {
-                "Authorization": `JWT ${token}`
-            },
-            body: formData
-        }).then(response => {
-            if(response.status === 401) {
-                dispatch(userActions.logout());
-            } else if (response.ok) {
-                return true;
-            } else {
-                return false;
-            }
-        })
-        .catch(err => {
-            throw(err);
-        });
+        let response;
+        
+        try {
+            response = await fetch(`/images/`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `JWT ${token}`
+                },
+                body: formData
+            });    
+        } catch(e) {
+            console.log(e);
+        }
+
+        if(response.status === 401) {
+            dispatch(userActions.logout());
+            return false;
+        } else if (response.ok) {
+            return true;
+        } 
     };
 };
+
 
 // initial state 
 const initialState = {
