@@ -11,7 +11,7 @@ class ExploreUsers(APIView):
     def get(self, request, format=None):
 
         last_five = models.User.objects.all().order_by('-date_joined')[:5]
-        print(last_five)
+
         serializer = serializers.ListUserSerializer(last_five, many=True, context={"request": request})
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -74,7 +74,7 @@ class UserProfile(APIView):
             return None
 
     def get(self, request, username, format=None):
-        print(username);
+
         if username is None:
             loggedInUser = request.user
             user = self.get_user(loggedInUser.username)

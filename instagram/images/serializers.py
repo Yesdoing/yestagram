@@ -88,7 +88,7 @@ class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
         return False
 
 
-class InputImageSerializer(serializers.ModelSerializer):
+class InputImageSerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
     class Meta:
         model = models.Image

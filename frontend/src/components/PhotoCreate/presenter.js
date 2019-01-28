@@ -23,7 +23,12 @@ const PhotoCreate = (props, context) => (
         ) : (
           <div className={styles.nonImage}>
             <label htmlFor="preview">
-              <MdImage fontSize="48px" color="black" />
+              <div className={styles.labelBox}>
+                  <MdImage fontSize="48px" color="black" />
+                  <div className={styles.inputMessage}>
+                    <span>Click for inserting Image</span>
+                  </div>
+                </div>
             </label>
             <input
               id="preview"

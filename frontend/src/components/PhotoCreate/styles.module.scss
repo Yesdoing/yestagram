@@ -11,13 +11,19 @@
     width: 100%;
     min-height: 520px;
     display: flex;
+    @include breakpoint('phone') {
+      flex-direction: column;
+    }
     .preview-image {
       flex: 1;
-      background-color: $light-grey;
+      background-color: white;
       min-height: 520px;
       display: flex;
       justify-content: center;
       align-items: center;
+      @include breakpoint('phone'){
+        min-height: 300px;
+      }
       .img-column {
         img {
           width: 100%;
@@ -28,6 +34,26 @@
         }
       }
       .non-image {
+        text-align: center;
+        border: 3px dotted $dark-grey; 
+        border-radius: 10px;
+        label {
+          cursor: pointer;
+          .labelBox {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 130px;
+            .inputMessage {
+              margin-top: 10px;
+              font-size: 12px;
+              color: $dark-grey;
+              font-weight: 600;
+            }  
+          }
+        }
         input[type="file"] {
           visibility: hidden;
           position: absolute;
@@ -39,7 +65,6 @@
           &:hover {
             filter: drop-shadow(4px 4px 4px #999);
             transform: rotate(-0.6deg);
-            cursor: pointer
           }
         }
       }
@@ -52,6 +77,9 @@
       align-items: center;
       justify-content: center;
       padding-top: 40px;
+      @include breakpoint('phone'){
+        border-top: 1px solid $dark-grey;
+      }
       .column {
         display: flex;
         flex-direction: column;
@@ -63,8 +91,6 @@
           margin-bottom: 10px;
         }
         margin-bottom: 20px;
-        .input-file {
-        }
         .input-text {
           border: 1px solid #efefef;
           border-radius: 3px;
