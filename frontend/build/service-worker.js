@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://yestagram.s3.amazonaws.com/precache-manifest.f26d0d0fe37a1736180a698506eafd35.js"
+  "https://d1xpgovvihdith.cloudfront.net/precache-manifest.7f1f81d5b1c89d3f43f2c3e33e9f1982.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("https://yestagram.s3.amazonaws.com/index.html", {
+workbox.routing.registerNavigationRoute("https://d1xpgovvihdith.cloudfront.net/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
