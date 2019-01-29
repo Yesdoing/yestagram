@@ -15,7 +15,7 @@ Yestagram은 Instagram Clone Project입니다.
 - <details>
   <summary>미리보기</summary>
   <div markdown="1">
-  <img src="https://cloudcraft.co/view/39798db5-21f6-4ebf-968c-d0b0fe3f3463?key=_yTft9psUrK9gSV7HG7MJw"/>
+  <img src="https://cloudcraft.co/view/39798db5-21f6-4ebf-968c-d0b0fe3f3463?key=_yTft9psUrK9gSV7HG7MJw" width="400" height="400"/>
   </div>
   </details>
 
@@ -28,12 +28,12 @@ Yestagram은 Instagram Clone Project입니다.
     </div>
     </details>
 - Explore User
-![image](https://drive.google.com/file/d/1CscR-6jya5CQ5cjgrYefdEBgZc_WYZqY/view?usp=sharing)
+![image](https://drive.google.com/file/d/1CscR-6jya5CQ5cjgrYefdEBgZc_WYZqY/view?usp=sharing =400x400)
 - Show User Profile
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-    <img src="https://drive.google.com/open?id=1RjtDaf3GCBqGkMnthy0AQIQbQNHvVAGP" />
+    <img src="https://drive.google.com/open?id=1RjtDaf3GCBqGkMnthy0AQIQbQNHvVAGP" width="400" height="400"/>
     </div>
     </details>
 - Show Notification
