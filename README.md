@@ -15,7 +15,7 @@ Yestagram은 Instagram Clone Project입니다.
 - <details>
   <summary>미리보기</summary>
   <div markdown="1">
-    ![diagram](https://cloudcraft.co/view/39798db5-21f6-4ebf-968c-d0b0fe3f3463?key=_yTft9psUrK9gSV7HG7MJw)
+  <img src="https://cloudcraft.co/view/39798db5-21f6-4ebf-968c-d0b0fe3f3463?key=_yTft9psUrK9gSV7HG7MJw"/>
   </div>
   </details>
 
@@ -31,14 +31,14 @@ Yestagram은 Instagram Clone Project입니다.
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-      ![explore_follow](https://drive.google.com/open?id=1CscR-6jya5CQ5cjgrYefdEBgZc_WYZqY)
+    <img src="https://drive.google.com/open?id=1CscR-6jya5CQ5cjgrYefdEBgZc_WYZqY"/>
     </div>
     </details>
 - Show User Profile
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-      ![show_detail_photo](https://drive.google.com/open?id=1RjtDaf3GCBqGkMnthy0AQIQbQNHvVAGP)
+    <img src="https://drive.google.com/open?id=1RjtDaf3GCBqGkMnthy0AQIQbQNHvVAGP" />
     </div>
     </details>
 - Show Notification
@@ -52,7 +52,7 @@ Yestagram은 Instagram Clone Project입니다.
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-      ![search](https://drive.google.com/open?id=1MaYWrDq51VL9snBzx7c4xNtQ0VBClkO4)
+    <img src="https://drive.google.com/open?id=1MaYWrDq51VL9snBzx7c4xNtQ0VBClkO4"/>
     </div>
     </details>
 - Like / UnLike
@@ -60,7 +60,7 @@ Yestagram은 Instagram Clone Project입니다.
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-      ![like_Unlike_comment](https://drive.google.com/open?id=1aOY0jEwgtFfccXgTI5IdiLHaP47zjxhj)
+    <img src="https://drive.google.com/open?id=1aOY0jEwgtFfccXgTI5IdiLHaP47zjxhj"/>
     </div>
     </details>
 - Follow / UnFollow
@@ -68,7 +68,7 @@ Yestagram은 Instagram Clone Project입니다.
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-      ![uploadImage](https://drive.google.com/open?id=1PBgYpgiNR_aJZIKPisSkdTrApxBFWmVo)
+    
     </div>
     </details>
 - Show Detail Image
@@ -82,15 +82,15 @@ Yestagram은 Instagram Clone Project입니다.
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-      ![show_follow](https://drive.google.com/open?id=1fEgcpZAx_c3zLb2vTCoCOvB8fU18Yr7u)
+    <img src="https://drive.google.com/open?id=1fEgcpZAx_c3zLb2vTCoCOvB8fU18Yr7u" />
     </div>
     </details>
 - Login / SignUp
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-      ![login](https://drive.google.com/open?id=1D2Nim7cii_uBBwbXR9QMWPh8_u2laRYD)
-      ![signup](https://drive.google.com/open?id=1ww6r9Dvp8FaqkDhrtYtOL0FiArTm3th7)
+    <img src="https://drive.google.com/open?id=1D2Nim7cii_uBBwbXR9QMWPh8_u2laRYD" />
+    <img src="https://drive.google.com/open?id=1ww6r9Dvp8FaqkDhrtYtOL0FiArTm3th7" />
     </div>
     </details>
 - Facebook Login
