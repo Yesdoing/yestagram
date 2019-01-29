@@ -8,6 +8,9 @@ Yestagram은 Instagram Clone Project입니다.
 ## Tryout
 <https://instagram.yesdoing.xyz/>
 
+## Demo
+<https://youtu.be/SqMTPuZY-EU>
+
 ## Period
 2018년 11월 ~ 2019년 1월
 
@@ -15,7 +18,7 @@ Yestagram은 Instagram Clone Project입니다.
 - <details>
   <summary>미리보기</summary>
   <div markdown="1">
-  <img src="https://cloudcraft.co/view/39798db5-21f6-4ebf-968c-d0b0fe3f3463?key=_yTft9psUrK9gSV7HG7MJw" width="400" height="400"/>
+  <img src="./demo/awsdiagram.png"/>
   </div>
   </details>
 
@@ -28,12 +31,17 @@ Yestagram은 Instagram Clone Project입니다.
     </div>
     </details>
 - Explore User
-![image](https://drive.google.com/file/d/1CscR-6jya5CQ5cjgrYefdEBgZc_WYZqY/view?usp=sharing =400x400)
+  - <details>
+    <summary>미리보기</summary>
+    <div markdown="1">
+    <img src="./demo/explore&follow.gif"/>
+    </div>
+    </details>
 - Show User Profile
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-    <img src="https://drive.google.com/open?id=1RjtDaf3GCBqGkMnthy0AQIQbQNHvVAGP" width="400" height="400"/>
+    <img src="./demo/show_detail_photo.gif" />
     </div>
     </details>
 - Show Notification
@@ -47,7 +55,7 @@ Yestagram은 Instagram Clone Project입니다.
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-    <img src="https://drive.google.com/open?id=1MaYWrDq51VL9snBzx7c4xNtQ0VBClkO4"/>
+    <img src="./demo/search2.gif"/>
     </div>
     </details>
 - Like / UnLike
@@ -55,37 +63,31 @@ Yestagram은 Instagram Clone Project입니다.
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-    <img src="https://drive.google.com/open?id=1aOY0jEwgtFfccXgTI5IdiLHaP47zjxhj"/>
+    <img src="./demo/like_comment2.gif"/>
     </div>
     </details>
 - Follow / UnFollow
 - Upload Image
-  - <details>
-    <summary>미리보기</summary>
-    <div markdown="1">
-    
-    </div>
-    </details>
 - Show Detail Image
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-        
+    <img src="./demo/show_detail_photo.gif"/>
     </div>
     </details>
 - Show follower / following 
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-    <img src="https://drive.google.com/open?id=1fEgcpZAx_c3zLb2vTCoCOvB8fU18Yr7u" />
+    <img src="./demo/show_follow.gif" />
     </div>
     </details>
 - Login / SignUp
   - <details>
     <summary>미리보기</summary>
     <div markdown="1">
-    <img src="https://drive.google.com/open?id=1D2Nim7cii_uBBwbXR9QMWPh8_u2laRYD" />
-    <img src="https://drive.google.com/open?id=1ww6r9Dvp8FaqkDhrtYtOL0FiArTm3th7" />
+    <img src="./demo/Login.gif" />
+    <img src="./demo/signup.gif" />
     </div>
     </details>
 - Facebook Login
