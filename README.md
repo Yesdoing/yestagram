@@ -28,12 +28,7 @@ Yestagram은 Instagram Clone Project입니다.
     </div>
     </details>
 - Explore User
-  - <details>
-    <summary>미리보기</summary>
-    <div markdown="1">
-    <img src="https://drive.google.com/open?id=1CscR-6jya5CQ5cjgrYefdEBgZc_WYZqY"/>
-    </div>
-    </details>
+![image](https://drive.google.com/file/d/1CscR-6jya5CQ5cjgrYefdEBgZc_WYZqY/view?usp=sharing)
 - Show User Profile
   - <details>
     <summary>미리보기</summary>
